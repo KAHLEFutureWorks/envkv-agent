@@ -204,10 +204,15 @@ class EnVKVCalculationTests(unittest.TestCase):
         # Der Ausschnitt darf die einbettende Seite weder ersetzen noch nachladen.
         for forbidden in ("<!doctype", "<html", "<head", "<body", "<script", "@page", "http://", "https://"):
             self.assertNotIn(forbidden, snippet.lower(), f"{forbidden} gehört nicht in den Ausschnitt")
-        # Jede einzelne Stilregel bleibt auf die eigene Wurzelklasse begrenzt.
+        # Jede einzelne Stilregel bleibt auf die eigene Wurzelklasse begrenzt,
+        # auch die Verdichtung für den Ausdruck.
         css = snippet.split("<style>")[1].split("</style>")[0]
-        rules = [rule for rule in css.split("}") if rule.strip()]
-        self.assertGreater(len(rules), 10)
+        self.assertIn("@media print{", css)
+        bildschirm, _, druck = css.partition("@media print{")
+        rules = [
+            rule for rule in (bildschirm + druck.rstrip("}")).split("}") if rule.strip()
+        ]
+        self.assertGreater(len(rules), 20)
         for rule in rules:
             for selector in rule.split("{")[0].split(","):
                 self.assertTrue(
@@ -424,6 +429,26 @@ class EnVKVCalculationTests(unittest.TestCase):
 
         # Es gibt nur noch eine Darstellung des gesetzlichen Hinweises.
         self.assertFalse(hasattr(data_sheet, "render_data_sheet_pdf"))
+
+    def test_print_rules_shrink_only_the_printout(self) -> None:
+        from backend.app.services.data_sheet import _stylesheet
+
+        css = _stylesheet()
+        bildschirm, _, druck = css.partition("@media print{")
+        druck = druck.rstrip("}")
+
+        # Am Bildschirm bleibt die Grundschrift bei 12 pt; nur der Ausdruck
+        # wird verdichtet, damit der Hinweis auf eine Seite passt.
+        self.assertIn("font:12pt Arial", bildschirm)
+        self.assertNotIn("font-size:9.5pt", bildschirm)
+        self.assertIn("font-size:9.5pt", druck)
+        self.assertIn("font-size:7.5pt", druck)
+
+        # Die Überschrift behält ihre gesetzlich vorgeschriebenen 26 pt.
+        self.assertIn("font-size:26pt", bildschirm)
+        self.assertNotIn("font-size:26pt", druck)
+        for regel in druck.split("}"):
+            self.assertNotIn("h1{font-size", regel.replace(" ", ""))
 
 
 if __name__ == "__main__":

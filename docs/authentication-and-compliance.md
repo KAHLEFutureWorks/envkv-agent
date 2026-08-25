@@ -149,8 +149,18 @@ Offen bleibt die visuelle Konformitätsprüfung gegen das amtliche Muster. Die
 Längen der Klassenpfeile beruhen auf dem Abgleich mit dem Herstellerlabel, nicht
 auf den verbindlichen Maßen aus Anlage 1.
 
-Ebenfalls offen: Der Hinweis ist derzeit rund 369 mm hoch und passt damit nicht
-auf eine Seite (verfügbar sind 283 mm). Ihn auf eine Seite zu bringen erfordert
-kleinere Schriftgrade für Fließtext und Fußnoten. Welche Mindestgrößen Anlage 1
-vorschreibt, muss die rechtliche Prüfung festlegen; bis dahin bleibt die Ausgabe
-zweiseitig, wobei die Kästen dank `break-inside: avoid` nicht zerrissen werden.
+Am Bildschirm ist der Hinweis rund 369 mm hoch. Für den Ausdruck greift eine
+Verdichtung über `@media print`: Fließtext 9,5 pt statt 12 pt, Fußnoten 7,5 pt
+statt 10 pt, engere Innenabstände und flachere Klassenpfeile. Damit bleibt die
+Ausgabe auf einer Seite:
+
+| Fahrzeug | Bildschirm | Ausdruck | verfügbar |
+|---|---|---|---|
+| Golf eHybrid (Plug-in-Hybrid, umfangreichster Fall) | 366 mm | 253 mm | 283 mm |
+| T-Cross (Benzin) | 332 mm | 228 mm | 283 mm |
+
+Die Überschrift behält in beiden Fassungen ihre 26 pt, weil Anlage 1 sie
+ausdrücklich vorschreibt. Für die übrigen Schriftgrade liegen die verbindlichen
+Mindestwerte nicht vor; sie sind Teil der offenen rechtlichen Prüfung. Sollte
+sich dort ein höherer Mindestwert ergeben, ist die Verdichtung in
+`_CSS_PRINT` an einer Stelle anzupassen.

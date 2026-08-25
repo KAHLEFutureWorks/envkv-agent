@@ -80,11 +80,38 @@ _CSS_RULES = (
 )
 
 
-def _stylesheet() -> str:
+# Verdichtung ausschließlich für den Ausdruck. Am Bildschirm bleibt die
+# Darstellung unverändert; beim Drucken muss der Hinweis auf eine Seite passen.
+# Die Überschrift behält ihre 26 pt, weil Anlage 1 sie ausdrücklich vorschreibt.
+_CSS_PRINT = (
+    ("", "font-size:9.5pt"),
+    (" h1", "margin:0 0 6px"),
+    (" .box", "margin:0 0 6px;padding:7px"),
+    (" .head", "font-size:11pt;gap:5px 18px"),
+    (" table", "font-size:11pt"),
+    (" th,.{root} td", "padding:3px"),
+    (" .middle>section", "padding:7px"),
+    (" h2", "font-size:13pt;margin:0 0 5px"),
+    (" h3", "font-size:10pt;margin:5px 0 1px"),
+    (" .arrow", "height:21px;margin:2px 0;padding:3px 8px"),
+    (" .arrow b", "font-size:11pt"),
+    (" .badge", "font:bold 15px Arial;padding:5px 10px;min-width:52px"),
+    (" .scale-head", "font-size:7.5pt;padding:0 4px 3px"),
+    (" .foot", "font-size:7.5pt;margin:4px 0"),
+    (" .details .row,.{root} .cost-row", "padding:1px 0"),
+    (" p", "margin:0.6em 0"),
+)
+
+
+def _rules(rules: tuple[tuple[str, str], ...]) -> str:
     return "".join(
         f".{ROOT_CLASS}{selector.format(root=ROOT_CLASS)}{{{declarations}}}"
-        for selector, declarations in _CSS_GUARDS + _CSS_RULES
+        for selector, declarations in rules
     )
+
+
+def _stylesheet() -> str:
+    return _rules(_CSS_GUARDS + _CSS_RULES) + "@media print{" + _rules(_CSS_PRINT) + "}"
 
 
 LEGAL_INTRO = (
