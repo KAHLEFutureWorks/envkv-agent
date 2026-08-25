@@ -167,7 +167,30 @@ Vor dem Neuladen prüfen, ob Caddy den Dienst überhaupt erreicht:
 sudo docker run --rm --network stack_appnet curlimages/curl -s http://envkv-api:8088/api/v1/health
 ```
 
-Caddy neu laden, dann von außen prüfen:
+### Caddy neu starten
+
+Zwei Besonderheiten der KAHLE-Umgebung:
+
+- Die globale Konfiguration enthält `admin off`. Damit ist die
+  Admin-Schnittstelle abgeschaltet und `caddy reload` funktioniert **nicht** —
+  der Befehl spricht genau diese Schnittstelle an.
+- `docker compose restart caddy` scheitert im Vinci-Stack, weil dessen
+  Umgebungsdatei `.env.production` heißt und von Compose nicht automatisch
+  gelesen wird. Compose bricht dann schon beim Auflösen der Platzhalter ab;
+  angefasst wird dabei nichts.
+
+Der verlässliche Weg ist deshalb der direkte Neustart des Containers. Er nimmt
+die bestehende Containerkonfiguration unverändert mit und liest die eingebundene
+Caddyfile neu ein:
+
+```bash
+sudo docker restart caddy
+```
+
+Das unterbricht für wenige Sekunden **alle** Seiten hinter diesem Caddy, nicht
+nur den EnVKV-Dienst.
+
+Danach von außen prüfen:
 
 ```bash
 curl -s https://envkv.kahle.de/api/v1/health
