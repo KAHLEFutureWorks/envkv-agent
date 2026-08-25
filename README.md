@@ -226,10 +226,16 @@ Entra ID mit kurzlebigen Tokens.
 
 ## Inbetriebnahme
 
-Der vollständige Ablauf vom heutigen Stand bis zum Pilotbetrieb unter
-`https://envkv.kahle.de` steht in `docs/deployment.md`: Voraussetzungen,
-Caddy-Route, fachliche Abnahme, Sicherung, Rückweg und die wiederkehrenden
-Aufgaben.
+Der Server erhält den Stand als Paket, nicht per `git clone`. Paket bauen:
+
+```powershell
+.\deployuild-package.ps1
+```
+
+Danach übertragen, auf dem Server entpacken und `sudo bash install.sh`
+ausführen. Der vollständige Ablauf steht in `docs/deployment.md`:
+Voraussetzungen, Zugangsdaten, Caddy-Route, fachliche Abnahme, Sicherung,
+Rückweg und die wiederkehrenden Aufgaben.
 
 Lokale Einrichtung inklusive Testabhängigkeiten:
 

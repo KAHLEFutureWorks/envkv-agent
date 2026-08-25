@@ -14,3 +14,6 @@ __pycache__/
 # könnte gegenüber src veralten und dann eine falsche Version ausgeliefert werden.
 node_modules/
 extension/dist/
+
+# Erzeugte Auslieferungspakete
+deploy/dist/

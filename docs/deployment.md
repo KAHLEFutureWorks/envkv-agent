@@ -54,53 +54,88 @@ Abbild wird abgewiesen.
 
 ## 2. Voraussetzungen auf dem Server
 
-- Docker mit Compose-Plugin
-- Der DNS-Eintrag `envkv.kahle.de` zeigt auf den Server
-- Ausgehender Zugriff auf `https://api.productdata.volkswagenag.com`
-- Schreibrechte im Verzeichnis des neuen Stacks
+- Docker mit Compose-Plugin (`docker compose version`)
+- ein Konto mit `sudo`-Rechten; `/opt` gehört root, deshalb laufen die
+  Installationsschritte über `sudo`
+- der DNS-Eintrag `envkv.kahle.de` zeigt auf den Server
+- ausgehender Zugriff auf `https://api.productdata.volkswagenag.com`
+- die OKAPI-Zugangsdaten von Volkswagen liegen vor
 
-## 3. Zugriffsschlüssel erzeugen
+## 3. Paket auf dem Arbeitsplatz bauen
 
-Der Schlüssel wird nie von Hand ausgedacht und nie in das Repository gelegt:
+Das Paket enthält exakt den Stand eines Commits. Der Arbeitsbaum muss sauber
+sein, sonst bricht das Skript ab — sonst entstünde ein Paket, das keinem
+nachvollziehbaren Stand entspricht.
 
-```bash
-openssl rand -base64 48
+```powershell
+cd C:\Projekte\kahle-envkv-agent
+.\deploy\build-package.ps1
 ```
 
-Der Wert wird in `.env` als `EXTENSION_API_KEY` eingetragen und zusätzlich im
-Passwortmanager der IT hinterlegt, weil ihn später auch die Intune-Richtlinie
-benötigt.
+Das Skript legt `deploy\dist\envkv-agent-<Datum>-<Commit>.tar.gz` an, prüft die
+Zeilenenden von `install.sh` und gibt die SHA256-Prüfsumme aus. Es nimmt
+ausschließlich versionierte Dateien auf; `.env`, Auditdaten und lokale
+Umgebungen können dadurch nicht in das Paket geraten.
 
-## 4. Stack einrichten
+## 4. Paket übertragen
 
-```bash
-git clone https://github.com/KAHLEFutureWorks/envkv-agent.git /opt/envkv
-cd /opt/envkv
+```powershell
+scp -i "$env:USERPROFILE\.ssh\kahle-vinci-admin" -o IdentitiesOnly=yes `
+  "deploy\dist\envkv-agent-<Datum>-<Commit>.tar.gz" `
+  joltmanns@152.53.158.166:/tmp/envkv-agent-<Datum>-<Commit>.tar.gz
 ```
 
-Anschließend `.env.example` nach `.env` kopieren und ausfüllen.
-Pflichtwerte sind `VW_CLIENT_ID`, `VW_CLIENT_SECRET` und `EXTENSION_API_KEY`;
-ohne sie startet der Stack absichtlich nicht. `.env` gehört ausschließlich dem
-Dienstkonto:
+Auf dem Server die Prüfsumme vergleichen, entpacken und installieren:
 
 ```bash
-chmod 600 .env
+cd /tmp
+sha256sum envkv-agent-<Datum>-<Commit>.tar.gz
+tar -xzf envkv-agent-<Datum>-<Commit>.tar.gz
+cd envkv-agent-<Datum>-<Commit>
+sudo bash install.sh
 ```
 
-Starten:
+### Was install.sh tut
+
+Das Skript ist wiederholbar und darf jederzeit erneut laufen:
+
+1. prüft Docker und das Compose-Plugin
+2. legt die Anwendungsdateien nach `/opt/envkv` (die Bäume `backend`, `spike`,
+   `tools`, `docs` und `extension` werden dabei vollständig ersetzt, damit keine
+   Dateien einer früheren Version zurückbleiben)
+3. legt beim **ersten** Lauf `/opt/envkv/.env` an, erzeugt darin einen
+   Zugriffsschlüssel, setzt die Rechte auf 600 — und **hält an**, bis die
+   Volkswagen-Zugangsdaten eingetragen sind
+4. entfernt Windows-Zeilenenden aus der `.env`, weil Docker sie sonst still in
+   die Zugangsdaten übernähme
+5. baut das Abbild und startet den Stack
+6. wartet auf `healthy` und prüft Statusabfrage sowie Zugriffsschutz
+
+Eine vorhandene `.env` und das Datenvolumen mit den Auditsätzen werden **nie**
+überschrieben.
+
+### Zugangsdaten eintragen
+
+Nach dem ersten Lauf:
 
 ```bash
-docker compose up --build -d
+sudo nano /opt/envkv/.env
 ```
 
-Prüfung — der Dienst antwortet nur lokal, das ist beabsichtigt:
+Auszufüllen sind `VW_CLIENT_ID` und `VW_CLIENT_SECRET`. Der
+`EXTENSION_API_KEY` wurde bereits erzeugt. Speichern mit `Strg+O`, `Enter`,
+schließen mit `Strg+X`. Danach:
 
 ```bash
-curl -s http://127.0.0.1:8088/api/v1/health
+cd /tmp/envkv-agent-<Datum>-<Commit>
+sudo bash install.sh
 ```
 
-Erwartet: `{"status":"ok"}`. Zusätzlich muss `docker compose ps` den Zustand
-`healthy` zeigen; der Healthcheck ist im Abbild hinterlegt.
+Den erzeugten Zugriffsschlüssel später auslesen:
+
+```bash
+sudo grep '^EXTENSION_API_KEY=' /opt/envkv/.env
+```
 
 ## 5. Caddy-Route ergänzen
 
@@ -180,32 +215,20 @@ täglich selbsttätig.
 
 ## 9. Aktualisierung und Rückweg
 
-```bash
-cd /opt/envkv
-docker compose up --build -d
-docker compose ps
-curl -s https://envkv.kahle.de/api/v1/health
-```
+Eine Aktualisierung ist derselbe Weg wie die Erstinstallation: neues Paket
+bauen, übertragen, entpacken, `sudo bash install.sh`. Die `.env` bleibt
+erhalten, das Datenvolumen ebenfalls.
 
-Aktualisierung auf den neuesten Stand:
+Rückweg auf einen früheren Stand: das Paket des gewünschten Commits erneut
+übertragen und installieren. Welcher Stand gerade läuft, zeigt:
 
 ```bash
-cd /opt/envkv
-git pull
-docker compose up --build -d
+cat /opt/envkv/VERSION
 ```
 
-Rückweg auf einen bestimmten Stand:
-
-```bash
-git log --oneline          # gewünschten Commit heraussuchen
-git checkout <commit>
-docker compose up --build -d
-```
-
-Das Datenvolumen `envkv-data` bleibt dabei unberührt; Auditsätze gehen nicht
-verloren. Ein `docker compose down -v` würde das Volume löschen und ist im
-Betrieb deshalb zu vermeiden.
+Das Datenvolumen `envkv-data` bleibt bei allen Aktualisierungen unberührt;
+Auditsätze gehen nicht verloren. Ein `docker compose down -v` würde das Volume
+löschen und ist im Betrieb deshalb zu vermeiden.
 
 ## 10. Wiederkehrende Aufgaben
 
