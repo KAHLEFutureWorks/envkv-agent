@@ -1,4 +1,4 @@
-<#
+﻿<#
 .SYNOPSIS
     Baut ein Auslieferungspaket des KAHLE EnVKV Agent für den Server.
 

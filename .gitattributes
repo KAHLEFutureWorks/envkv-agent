@@ -10,3 +10,7 @@
 # VERSION erhaelt beim Paketbau den tatsaechlichen Commit eingesetzt. Damit ist
 # jedes ausgelieferte Paket eindeutig einem Stand zuzuordnen.
 VERSION export-subst
+
+# Windows PowerShell 5.1 liest .ps1 ohne BOM als ANSI; Umlaute zerlegen dann
+# das Skript. Die Datei bleibt deshalb unveraendert erhalten.
+*.ps1 -text
