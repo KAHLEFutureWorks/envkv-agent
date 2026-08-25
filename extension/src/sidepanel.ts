@@ -1,4 +1,4 @@
-import { ComplianceApiError, fetchCompliance, fetchDataSheet, fetchDataSheetSnippet, fetchModelRange } from "./api";
+import { ComplianceApiError, fetchCompliance, fetchDataSheetSnippet, fetchModelRange } from "./api";
 import type { ComplianceResult, ModelRangeResult, UsageContext } from "./types";
 
 const byId = <T extends HTMLElement>(id: string): T => document.querySelector<T>(`#${id}`)!;
@@ -181,41 +181,29 @@ byId<HTMLButtonElement>("copy-button").addEventListener("click", async () => {
 });
 byId<HTMLButtonElement>("settings-button").addEventListener("click", () => chrome.runtime.openOptionsPage());
 
-async function dataSheet(format: "html" | "pdf"): Promise<void> {
-  const blob = await fetchDataSheet(input.value.trim(), usageContext.value as UsageContext, format, selectedTypeId);
-  const url = URL.createObjectURL(blob);
-  if (format === "html") {
-    await chrome.tabs.create({ url });
-  } else {
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "envkv-datenblatt.pdf";
-    link.click();
-  }
-  setTimeout(() => URL.revokeObjectURL(url), 60_000);
-}
-
-byId<HTMLButtonElement>("copy-snippet").addEventListener("click", async () => {
+async function openPrintView(): Promise<void> {
   const feedback = byId("snippet-feedback");
-  feedback.textContent = "Einbettbarer Hinweis wird erstellt …";
+  feedback.textContent = "Druckansicht wird vorbereitet \u2026";
   feedback.className = "copy-feedback";
   try {
     const snippet = await fetchDataSheetSnippet(
       input.value.trim(), usageContext.value as UsageContext, selectedTypeId,
     );
-    await navigator.clipboard.writeText(snippet);
-    feedback.textContent = "✓ HTML kopiert. Bei der Fahrzeugbeschreibung des Angebots einfügen.";
-    feedback.className = "copy-feedback success-text";
+    // Der Hinweis wird der Druckseite über die Sitzungsablage übergeben. Eine
+    // Blob-URL erbte die Content Security Policy der Erweiterung und könnte dort
+    // keinen Ereignisbehandler ausführen.
+    await chrome.storage.session.set({ printSheet: snippet });
+    await chrome.tabs.create({ url: chrome.runtime.getURL("print.html") });
+    feedback.textContent = "";
   } catch (error) {
     feedback.textContent = error instanceof Error && error.message === "missing_configuration"
       ? "Bitte zuerst die Verbindung zum KAHLE-Dienst einrichten."
-      : error instanceof Error ? error.message : "Der einbettbare Hinweis konnte nicht erstellt werden.";
+      : error instanceof Error ? error.message : "Die Druckansicht konnte nicht geöffnet werden.";
     feedback.className = "copy-feedback error-text";
   }
-});
+}
 
-byId<HTMLButtonElement>("open-data-sheet").addEventListener("click", () => void dataSheet("html"));
-byId<HTMLButtonElement>("download-data-sheet").addEventListener("click", () => void dataSheet("pdf"));
+byId<HTMLButtonElement>("open-data-sheet").addEventListener("click", () => void openPrintView());
 
 byId<HTMLButtonElement>("range-copy").addEventListener("click", async () => {
   await navigator.clipboard.writeText(rangeOutputText);

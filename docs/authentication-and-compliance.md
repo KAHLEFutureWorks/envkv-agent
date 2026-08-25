@@ -130,8 +130,15 @@ Bei Plug-in-Hybriden zeigt die CO₂-Skala zwei Spalten nebeneinander, getrennt
 durch eine senkrechte Linie: „gewichtet kombiniert“ und „bei entladener
 Batterie“. Jede Klassenmarke steht in derselben Rasterzeile wie ihr Pfeil.
 
+Die Klassenpfeile tragen eine schwarze Kontur, die Buchstaben sind weiß mit
+schwarzer Kontur, und die beiden Kästen des dritten Blocks sind gleich breit.
+Beträge werden mit Tausenderpunkt ausgegeben.
+
+Es gibt nur noch **eine** Darstellung des Hinweises. Die zuvor getrennt
+gezeichnete PDF-Ausgabe ist entfallen; zwei Darstellungen desselben
+gesetzlichen Dokuments wären auf Dauer nicht deckungsgleich zu halten. Ein PDF
+entsteht bei Bedarf über die Druckansicht des Browsers.
+
 Offen bleibt die visuelle Konformitätsprüfung gegen das amtliche Muster. Die
-Größenverhältnisse der Pfeile sind unverändert übernommen worden, weil dafür
-die verbindlichen Maße aus Anlage 1 vorliegen müssen. Die PDF-Ausgabe wird
-weiterhin getrennt im Hochformat gezeichnet und bildet den aktuellen Aufbau noch
-nicht ab; maßgeblich sind der einbettbare Ausschnitt und die Druckansicht.
+Längen der Klassenpfeile beruhen auf dem Abgleich mit dem Herstellerlabel, nicht
+auf den verbindlichen Maßen aus Anlage 1.

@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from html import escape
-from io import BytesIO
 from typing import Any
 
 
@@ -49,12 +48,17 @@ _CSS_RULES = (
     (" table", "width:100%;border-collapse:collapse;font-size:14pt"),
     (" th,.{root} td", "padding:5px;text-align:left"),
     (" td", "font-weight:bold;text-align:right"),
-    (" .middle", "display:grid;grid-template-columns:1.15fr 1fr;padding:0;font-size:12pt"),
+    (" .middle", "display:grid;grid-template-columns:1fr 1fr;padding:0;font-size:12pt"),
     (" .middle>section", "padding:10px;min-height:275px"),
     (" .middle>section+section", "border-left:1.5px solid #172033"),
     (" h2", "font-size:16pt;margin:0 0 8px"),
     (" h3", "font-size:12pt;margin:8px 0 2px"),
-    (" .arrow", "height:29px;margin:4px 0;padding:7px 10px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%);color:#102030"),
+    # Der Pfeil besteht aus einer schwarzen Grundfläche und einer leicht
+    # eingerückten farbigen Füllung. Eine Umrandung liesse sich nicht darstellen,
+    # weil clip-path jeden Rahmen mit abschneidet.
+    (" .arrow", "position:relative;height:29px;margin:4px 0;padding:7px 10px;background:#000;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)"),
+    (" .arrow-fill", "position:absolute;left:1.5px;top:1.5px;right:1.5px;bottom:1.5px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)"),
+    (" .arrow b", "position:relative;color:#fff;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,0 0 1px #000"),
     # Die Klassenmarke steht in derselben Rasterzeile wie ihr Pfeil und sitzt
     # dadurch immer auf der Höhe der zutreffenden Klasse.
     (" .scale", "display:grid;align-items:center;row-gap:0;column-gap:0"),
@@ -97,11 +101,17 @@ GUIDE_NOTE = (
 )
 
 
+def _german_number(text: str) -> str:
+    """Wandelt eine englisch formatierte Zahl in die deutsche Schreibweise."""
+    return text.replace(",", "\x00").replace(".", ",").replace("\x00", ".")
+
+
 def _value(value: Any, suffix: str = "", digits: int | None = None) -> str:
     if value is None:
         return "entfällt"
-    if isinstance(value, float):
-        text = f"{value:.{1 if digits is None else digits}f}".replace(".", ",")
+    if isinstance(value, (int, float)) and not isinstance(value, bool):
+        # Tausendertrennzeichen wie im Herstellerlabel: 1.438,80 statt 1438,80.
+        text = _german_number(f"{value:,.{1 if digits is None else digits}f}")
     else:
         text = str(value).replace(".", ",")
     return f"{text}{suffix}"
@@ -133,7 +143,8 @@ def _render_content(sheet: dict[str, Any]) -> str:
             cells.append(f'<div class="scale-head{divided}">{escape(heading)}</div>')
     for position, grade in enumerate(scale):
         cells.append(
-            f'<div class="arrow" style="background:{COLORS[grade]};width:{34 + position * 7}%">'
+            f'<div class="arrow" style="width:{30 + position * 5}%">'
+            f'<span class="arrow-fill" style="background:{COLORS[grade]}"></span>'
             f"<b>{grade}</b></div>"
         )
         for index, (selected_grade, _) in enumerate(columns):
@@ -292,119 +303,3 @@ def render_data_sheet_snippet(sheet: dict[str, Any]) -> str:
         f"<style>{_stylesheet()}</style>\n"
         f"{_render_content(sheet)}</div>"
     )
-
-
-def render_data_sheet_pdf(sheet: dict[str, Any]) -> bytes:
-    from reportlab.lib.pagesizes import A4
-    from reportlab.lib.utils import simpleSplit
-    from reportlab.pdfgen import canvas
-
-    output = BytesIO()
-    page = canvas.Canvas(output, pagesize=A4)
-    width, height = A4
-    margin, content_width = 20, width - 40
-
-    def box(top: float, bottom: float) -> None:
-        page.rect(margin, bottom, content_width, top - bottom, fill=0, stroke=1)
-
-    def text(text_value: str, x: float, y: float, max_width: float, size: float = 8,
-             leading: float | None = None, bold: bool = False, max_lines: int | None = None) -> float:
-        font = "Helvetica-Bold" if bold else "Helvetica"
-        page.setFont(font, size)
-        lines = simpleSplit(str(text_value), font, size, max_width)
-        if max_lines is not None:
-            lines = lines[:max_lines]
-        step = leading or size * 1.18
-        for part in lines:
-            page.drawString(x, y, part)
-            y -= step
-        return y
-
-    text("Information über den Energieverbrauch und die", margin, height - 29, content_width, 26, 27, True, 1)
-    text("CO2-Emissionen des neuen Pkw", margin, height - 58, content_width, 26, 27, True, 1)
-    vehicle = sheet["vehicle"]
-    consumption = sheet["consumption"]
-    powertrain = sheet["powertrain"]
-    is_phev = powertrain == "plug_in_hybrid"
-    costs = sheet["annual_energy_costs"]
-    tax = sheet["vehicle_tax"]
-    powertrain_labels = {"battery_electric": "Elektromotor", "petrol": "Verbrennungsmotor",
-        "diesel": "Verbrennungsmotor", "hybrid": "nicht extern aufladbarer Hybridantrieb",
-        "plug_in_hybrid": "extern aufladbarer Hybridantrieb", "fuel_cell": "Brennstoffzelle"}
-    fuel_labels = {"PETROL": "Benzin", "DIESEL": "Diesel", "HYDROGEN": "Wasserstoff"}
-
-    box(750, 690)
-    text(f"Marke: {vehicle.get('brand') or ''}", 27, 737, 260, 9, bold=True)
-    text(f"Handelsbezeichnung: {vehicle.get('model') or ''} {vehicle.get('trim') or ''}", 300, 737, 267, 9, bold=True, max_lines=2)
-    text(f"Antriebsart: {powertrain_labels.get(powertrain, powertrain)}", 27, 712, 280, 9, bold=True)
-    text(f"Kraftstoff: {fuel_labels.get(str(consumption.get('fuel_type')), 'entfällt')}", 27, 696, 260, 9, bold=True)
-    text(f"anderer Energieträger: {'Strom' if consumption.get('combined_kwh_100km') is not None else 'entfällt'}", 355, 696, 210, 9, bold=True)
-
-    box(680, 588)
-    summary_rows = [
-        ("Kraftstoffverbrauch gewichtet kombiniert" if is_phev else "Kraftstoffverbrauch kombiniert", _value(consumption.get("combined_l_100km"), " l/100 km")),
-        ("Stromverbrauch gewichtet kombiniert" if is_phev else "Stromverbrauch kombiniert", _value(consumption.get("combined_kwh_100km"), " kWh/100 km")),
-        ("CO2-Emissionen gewichtet kombiniert" if is_phev else "CO2-Emissionen kombiniert", _value(sheet.get("declared_co2_g_km", consumption.get("co2_g_km")), " g/km", 0)),
-        ("Elektrische Reichweite EAER" if is_phev else "Elektrische Reichweite", _value(consumption.get("electric_range_km"), " km")),
-    ]
-    sy = 665
-    for label, value in summary_rows:
-        text(label, 30, sy, 350, 9, bold=True); text(value, 430, sy, 135, 9, bold=True); sy -= 18
-
-    box(578, 340)
-    divider = 392
-    page.line(divider, 340, divider, 578)
-    text("CO2-Klasse", 30, 559, 335, 14, bold=True)
-    basis = "Auf Grundlage der CO2-Emissionen gewichtet kombiniert / bei entladener Batterie" if is_phev else "Auf Grundlage der CO2-Emissionen kombiniert"
-    text(basis, 30, 540, 345, 8, max_lines=2)
-    selected = {sheet["co2_classes"].get("combined"), sheet["co2_classes"].get("discharged_battery")}
-    y = 505
-    for index, grade in enumerate(sheet["co2_classes"]["scale"]):
-        page.setFillColor(COLORS[grade])
-        bar_width = 96 + index * 25
-        page.rect(30, y - 11, bar_width, 18, fill=1, stroke=0)
-        page.setFillColor("black")
-        text(grade, 38, y - 7, 30, 10, bold=True)
-        if grade in selected:
-            page.setFillColor("#07162e"); page.rect(315, y - 13, 55, 23, fill=1, stroke=0)
-            page.setFillColor("white"); page.setFont("Helvetica-Bold", 14); page.drawCentredString(342, y - 7, grade)
-            page.setFillColor("black")
-        y -= 25
-
-    text("Weitere Angaben:", 402, 559, 165, 10, bold=True)
-    phases_l = consumption.get("phase_l_100km") or {}
-    phases_kwh = consumption.get("phase_kwh_100km") or {}
-    dy = 538
-    if consumption.get("combined_l_100km") is not None:
-        value = consumption.get("discharged_l_100km") if is_phev else consumption.get("combined_l_100km")
-        dy = text(("Kraftstoffverbrauch bei entladener Batterie kombiniert: " if is_phev else "Kraftstoffverbrauch kombiniert: ") + _value(value, " l/100 km"), 402, dy, 165, 7.5, max_lines=3)
-        for key, label in (("low", "Innenstadt"), ("medium", "Stadtrand"), ("high", "Landstraße"), ("extra_high", "Autobahn")):
-            if phases_l: dy = text(f"- {label}: {_value(phases_l.get(key), ' l/100 km')}", 407, dy - 2, 160, 7.5)
-    if consumption.get("combined_kwh_100km") is not None:
-        value = consumption.get("pure_electric_kwh_100km") if is_phev else consumption.get("combined_kwh_100km")
-        dy = text(("Stromverbrauch rein elektrisch kombiniert: " if is_phev else "Stromverbrauch kombiniert: ") + _value(value, " kWh/100 km"), 402, dy - 6, 165, 7.5, max_lines=3)
-        for key, label in (("low", "Innenstadt"), ("medium", "Stadtrand"), ("high", "Landstraße"), ("extra_high", "Autobahn")):
-            if phases_kwh: dy = text(f"- {label}: {_value(phases_kwh.get(key), ' kWh/100 km')}", 407, dy - 2, 160, 7.5)
-
-    box(330, 198)
-    distance = costs.get("annual_distance_km") or 15000
-    distance_text = f"{distance:,}".replace(",", ".")
-    text(f"Energiekosten bei {distance_text} km Jahresfahrleistung: {_value(costs.get('annual_cost_eur'), ' EUR/Jahr', 2)}".replace(",", "."), 30, 314, 535, 9, bold=True)
-    text(f"Mögliche CO2-Kosten über die nächsten 10 Jahre ({distance_text} km/Jahr)".replace(",", "."), 30, 283, 535, 8)
-    cy = 264
-    for label, price, amount in (("mittleren", "co2_price_medium_eur_t", "co2_cost_medium_eur"), ("niedrigen", "co2_price_low_eur_t", "co2_cost_low_eur"), ("hohen", "co2_price_high_eur_t", "co2_cost_high_eur")):
-        text(f"- bei einem angenommenen {label} durchschnittlichen CO2-Preis von {_value(costs.get(price), ' EUR/t', 2)}", 30, cy, 430, 7.5)
-        text(_value(costs.get(amount), " EUR", 2), 485, cy, 80, 7.5, bold=True); cy -= 17
-    text("Kraftfahrzeugsteuer:", 30, 207, 300, 8, bold=True)
-    text(str(tax.get("text") or _value(tax.get("annual_eur"), " EUR/Jahr", 2)), 430, 207, 135, 8, bold=True)
-
-    box(188, 20)
-    legal = "Die Informationen erfolgen gemäß der Pkw-Energieverbrauchskennzeichnungsverordnung. Die angegebenen Werte wurden nach dem vorgeschriebenen Messverfahren WLTP ermittelt. Der Kraftstoffverbrauch und die CO2-Emissionen eines Pkw sind nicht nur von der effizienten Ausnutzung des Kraftstoffs durch den Pkw, sondern auch vom Fahrstil und anderen nichttechnischen Faktoren abhängig. CO2 ist das für die Erderwärmung hauptsächlich verantwortliche Treibhausgas."
-    fy = text(legal, 27, 177, 541, 6.3, 7.2)
-    guide = "Ein Leitfaden über den Kraftstoffverbrauch und die CO2-Emissionen aller in Deutschland angebotenen neuen Pkw-Modelle ist unentgeltlich an jedem Verkaufsort einsehbar, an dem neue Pkw ausgestellt oder angeboten werden. Abrufbar unter www.dat.de/co2/."
-    fy = text(guide, 27, fy - 3, 541, 6.3, 7.2)
-    for index, note in enumerate(sheet["footnotes"], 1):
-        fy = text(f"{index}) {note}", 27, fy - 3, 541, 5.8, 6.6)
-    text(f"Erstellt am: {sheet['created_at']} - Quelle: {sheet['source']['provider']}", 27, 28, 541, 6)
-    page.save()
-    return output.getvalue()

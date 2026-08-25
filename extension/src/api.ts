@@ -48,18 +48,6 @@ export async function fetchCompliance(vehicleName: string, usageContext: UsageCo
   return body as ComplianceResult;
 }
 
-export async function fetchDataSheet(vehicleName: string, usageContext: UsageContext, format: "html" | "pdf", selectedTypeId?: string): Promise<Blob> {
-  const settings = await loadSettings();
-  if (!settings.apiKey) throw new Error("missing_configuration");
-  const response = await fetch(`${settings.apiUrl.replace(/\/$/, "")}/api/v1/vehicle/data-sheet.${format}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "X-API-Key": settings.apiKey },
-    body: JSON.stringify({ vehicle_name: vehicleName, usage_context: usageContext, selected_type_id: selectedTypeId }),
-  });
-  if (!response.ok) throw new Error("Das EnVKV-Datenblatt konnte nicht erstellt werden.");
-  return response.blob();
-}
-
 export async function fetchDataSheetSnippet(
   vehicleName: string,
   usageContext: UsageContext,

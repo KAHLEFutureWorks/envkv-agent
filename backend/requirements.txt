@@ -2,7 +2,6 @@
 # die Standardbibliothek; ein HTTP-Paket wird im Betrieb nicht benötigt.
 fastapi>=0.115,<1
 uvicorn[standard]>=0.34,<1
-reportlab>=4.2,<5
 
 # Zeitzonendaten fuer zoneinfo. Weder Windows noch schlanke Container bringen
 # sie zuverlaessig mit; das Angebotsdatum muss aber der Ortszeit folgen.

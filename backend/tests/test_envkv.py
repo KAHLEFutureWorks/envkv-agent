@@ -22,7 +22,6 @@ from backend.app.domain.envkv import (
 from backend.app.services.data_sheet import (
     ROOT_CLASS,
     render_data_sheet_html,
-    render_data_sheet_pdf,
     render_data_sheet_snippet,
 )
 
@@ -176,7 +175,6 @@ class EnVKVCalculationTests(unittest.TestCase):
         self.assertEqual("2027-2036", sheet["co2_cost_period"])
         self.assertEqual(["A", "B", "C", "D", "E", "F", "G"], sheet["co2_classes"]["scale"])
         self.assertIn("Drucken oder als PDF speichern", render_data_sheet_html(sheet))
-        self.assertTrue(render_data_sheet_pdf(sheet).startswith(b"%PDF"))
 
     def test_embeddable_snippet_is_self_contained_and_matches_the_printed_sheet(self) -> None:
         consumption = ConsumptionValues(
@@ -377,6 +375,55 @@ class EnVKVCalculationTests(unittest.TestCase):
         # 0,321 EUR/kWh entspricht 32,10 ct/kWh.
         self.assertIn("32,10 ct/kWh", html)
         self.assertNotIn("0,321 EUR/kWh", html)
+
+    def test_amounts_use_a_thousands_separator(self) -> None:
+        from backend.app.services.data_sheet import _value
+
+        self.assertEqual("1.438,80 EUR/Jahr", _value(1438.8, " EUR/Jahr", 2))
+        self.assertEqual("2.800,13 EUR", _value(2800.13, " EUR", 2))
+        self.assertEqual("4.092,00 EUR", _value(4092.0, " EUR", 2))
+        # Kleine Werte bleiben unveraendert, Reichweiten ebenso.
+        self.assertEqual("5,8 l/100 km", _value(5.8, " l/100 km"))
+        self.assertEqual("446 km", _value(446, " km", 0))
+        self.assertEqual("entfällt", _value(None))
+
+    def test_class_arrows_carry_an_outline_and_white_letters(self) -> None:
+        consumption = ConsumptionValues(
+            combined_kwh_100km=None, combined_l_100km=Decimal("5.8"),
+            co2_g_km=Decimal("131.1"), co2_class="D", electric_range_km=None,
+            fuel_type="PETROL",
+            phase_l_100km={"low": Decimal("7.1"), "medium": Decimal("5.5"),
+                           "high": Decimal("5.0"), "extra_high": Decimal("6.1")},
+        )
+        verified = VerifiedVehicleData(
+            vehicle=VehicleIdentity(
+                brand="Volkswagen", model="T-Cross", trim="Style", power_kw=85, power_ps=116,
+                battery_kwh=None, transmission="7-Gang-DSG", model_id="m", model_year=2027,
+                type_id="t", type_code="TYPE:T", engine_displacement_cc=999,
+            ),
+            consumption=consumption,
+            source=SourceReference("Volkswagen OKAPI", "m", 2027, "t", "TYPE:T", "2026-08-21"),
+            raw_wltp={}, powertrain=PowertrainType.PETROL,
+            annual_vehicle_tax_eur=Decimal("95.20"), tax_data_verified=True,
+        )
+        html = render_data_sheet_html(
+            build_data_sheet(verified, calculate_energy_costs(consumption, self.cost_config), "2026-08-21")
+        )
+        # Schwarze Grundflaeche mit eingerueckter farbiger Fuellung ergibt die Kontur;
+        # ein Rahmen liesse sich wegen clip-path nicht darstellen.
+        self.assertEqual(7, html.count('class="arrow-fill"'))
+        self.assertIn("background:#000", html)
+        self.assertIn("left:1.5px;top:1.5px;right:1.5px;bottom:1.5px", html)
+        # Weisse Buchstaben mit schwarzer Kontur.
+        self.assertIn("color:#fff;text-shadow:-1px -1px 0 #000", html)
+        # Beide Kaesten des dritten Blocks sind gleich breit.
+        self.assertIn("grid-template-columns:1fr 1fr", html)
+
+    def test_pdf_output_is_no_longer_offered(self) -> None:
+        import backend.app.services.data_sheet as data_sheet
+
+        # Es gibt nur noch eine Darstellung des gesetzlichen Hinweises.
+        self.assertFalse(hasattr(data_sheet, "render_data_sheet_pdf"))
 
 
 if __name__ == "__main__":

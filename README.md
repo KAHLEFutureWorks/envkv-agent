@@ -119,7 +119,7 @@ Das Backend liegt unter `backend/`. Es enthält bereits:
   mit automatischem Wechsel zum 01.07. und sicherem Stopp bei Ablauf
 - CO₂-Ausweisung in ganzen Gramm; Energie- und CO₂-Kosten stimmen damit auf den
   Cent mit den Labels von Volkswagen überein
-- vollständige Anlage-1-Ausgabe als neutrale A4-Browseransicht und PDF
+- vollständige Anlage-1-Ausgabe als A4-Browseransicht im Querformat
 - einbettbarer Anlage-1-Ausschnitt zum Einfügen bei der Fahrzeugbeschreibung
 - gesetzliche Modellspanne über alle Varianten für Werbung und Social Media
 - Steuerbefreiung für Elektrofahrzeuge hergeleitet aus § 3d KraftStG

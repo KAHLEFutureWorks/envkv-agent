@@ -25,7 +25,6 @@ from backend.app.services.volkswagen.provider import (
 from backend.app.storage import SQLiteStore
 from backend.app.services.data_sheet import (
     render_data_sheet_html,
-    render_data_sheet_pdf,
     render_data_sheet_snippet,
 )
 
@@ -213,14 +212,6 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return Response(
             render_data_sheet_snippet(data_sheet_for(payload, request)),
             media_type="text/plain; charset=utf-8",
-        )
-
-    @app.post("/api/v1/vehicle/data-sheet.pdf", dependencies=[Depends(require_api_key)])
-    def data_sheet_pdf(payload: ComplianceRequest, request: Request) -> Response:
-        return Response(
-            render_data_sheet_pdf(data_sheet_for(payload, request)),
-            media_type="application/pdf",
-            headers={"Content-Disposition": 'attachment; filename="envkv-datenblatt.pdf"'},
         )
 
     return app
