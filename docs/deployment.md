@@ -11,7 +11,6 @@ gilt.
 
 | Punkt | Warum er blockiert |
 |---|---|
-| Versionsverwaltung | Das Projekt liegt derzeit **nicht** in Git. Ohne Repository gibt es keinen nachvollziehbaren Stand, kein Rollback und keine Zuordnung „welcher Code erzeugte diesen Auditsatz". Für einen Dienst, dessen Ausgabe rechtlich verbindlich ist, ist das die wichtigste offene Voraussetzung. |
 | Visuelle Freigabe Anlage 1 | Die Rechtsmatrix stuft die Prüfung des Musters gegen das amtliche Original als kritisch ein. Sie ist noch nicht erfolgt. Bis dahin sollte das Datenblatt intern verwendet, aber nicht als „amtliches Datenblatt" bezeichnet werden. |
 | Zugriffsmodell | Der Pilot verwendet einen gemeinsamen Zugriffsschlüssel. Das ist bewusst als Übergang gedacht und muss vor einer Ausweitung durch Entra ID ersetzt werden. |
 
@@ -32,6 +31,26 @@ Volkswagen OKAPI                     ausgehend, OAuth
 
 Der bestehende KAHLE-Vinci-Stack bleibt unverändert. Im gemeinsamen Caddy kommt
 ausschließlich eine zusätzliche Route hinzu.
+
+### Trennung von den übrigen Projekten
+
+Der Stack ist so geschnitten, dass er sich mit keinem anderen Projekt auf dem
+Server etwas teilt:
+
+| Merkmal | Wert | Wirkung |
+|---|---|---|
+| Compose-Projekt | `envkv` | eigener Namensraum, keine Kollision mit anderen Stacks |
+| Netz | `envkv` | eigenes Docker-Netz, keine Sicht auf andere Container |
+| Volume | `envkv-data` | eigene Daten, von keinem anderen Dienst erreichbar |
+| Port | `127.0.0.1:8088` | von außen nicht erreichbar, nur über Caddy |
+| Benutzer | `envkv` | kein root im Container |
+| Dateisystem | schreibgeschützt | nur `/app/data` und ein 32 MB großes `/tmp` sind beschreibbar |
+| Rechte | `cap_drop: ALL`, `no-new-privileges` | keine zusätzlichen Kernel-Rechte |
+| Grenzen | 1 CPU, 512 MB | kann anderen Projekten keine Ressourcen entziehen |
+
+Nachgewiesen mit einem Probelauf: Der Dienst startet `healthy`, schreibt
+Auditsätze und Cache in das Volume, erzeugt PDFs, und ein Schreibversuch in das
+Abbild wird abgewiesen.
 
 ## 2. Voraussetzungen auf dem Server
 
@@ -55,10 +74,11 @@ benötigt.
 ## 4. Stack einrichten
 
 ```bash
-mkdir -p /opt/envkv && cd /opt/envkv
+git clone https://github.com/KAHLEFutureWorks/envkv-agent.git /opt/envkv
+cd /opt/envkv
 ```
 
-Projektstand dorthin bringen, `.env.example` nach `.env` kopieren und ausfüllen.
+Anschließend `.env.example` nach `.env` kopieren und ausfüllen.
 Pflichtwerte sind `VW_CLIENT_ID`, `VW_CLIENT_SECRET` und `EXTENSION_API_KEY`;
 ohne sie startet der Stack absichtlich nicht. `.env` gehört ausschließlich dem
 Dienstkonto:
@@ -167,9 +187,25 @@ docker compose ps
 curl -s https://envkv.kahle.de/api/v1/health
 ```
 
-Rückweg: den vorherigen Stand erneut ausrollen und den Stack neu bauen. Das
-Datenvolumen bleibt dabei unberührt. Ohne Versionsverwaltung ist dieser Rückweg
-derzeit nur manuell möglich — siehe Abschnitt 0.
+Aktualisierung auf den neuesten Stand:
+
+```bash
+cd /opt/envkv
+git pull
+docker compose up --build -d
+```
+
+Rückweg auf einen bestimmten Stand:
+
+```bash
+git log --oneline          # gewünschten Commit heraussuchen
+git checkout <commit>
+docker compose up --build -d
+```
+
+Das Datenvolumen `envkv-data` bleibt dabei unberührt; Auditsätze gehen nicht
+verloren. Ein `docker compose down -v` würde das Volume löschen und ist im
+Betrieb deshalb zu vermeiden.
 
 ## 10. Wiederkehrende Aufgaben
 

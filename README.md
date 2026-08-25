@@ -184,6 +184,11 @@ python -m tools.diagnose_model_range 'Golf Energy'
 
 ## Docker
 
+Der Dienst läuft als eigenständiger Stack mit eigenem Compose-Projekt, eigenem
+Netz und eigenem Volume; er teilt sich mit anderen Projekten auf dem Server
+nichts. Der Container läuft ohne root, mit schreibgeschütztem Dateisystem und
+begrenzt auf 1 CPU und 512 MB.
+
 Die Variablen aus `.env.example` in eine nicht versionierte `.env` übernehmen
 und anschließend starten:
 
@@ -229,7 +234,8 @@ Aufgaben.
 Lokale Einrichtung inklusive Testabhängigkeiten:
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip install -r .ackendequirements-dev.txt
+.\.venv\Scripts\python.exe -m pip install -r .ackend
+equirements-dev.txt
 ```
 
 ## Betriebsperspektive
