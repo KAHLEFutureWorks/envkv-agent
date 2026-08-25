@@ -244,6 +244,11 @@ Lokale Einrichtung inklusive Testabhängigkeiten:
 equirements-dev.txt
 ```
 
+## Fachliche Begründung für Mitarbeitende
+
+Warum in der Werbung nur der kombinierte Wert steht und keine Fahrphasen, und
+warum dort auch beim Benziner „Energieverbrauch" steht: `docs/werbung-pflichtangaben.md`.
+
 ## Betriebsperspektive
 
 Für die Produktivversion erhält der Service einen eigenen Docker-Stack

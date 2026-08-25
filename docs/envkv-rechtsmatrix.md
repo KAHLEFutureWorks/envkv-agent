@@ -73,6 +73,10 @@ Die Bezeichnungen sollten sich eng an die Verordnung halten und nicht durch frei
 - BEV: „Energieverbrauch kombiniert: … kWh/100 km; CO₂-Emissionen kombiniert: 0 g/km; CO₂-Klasse: A“
 - Brennstoffzelle: „Wasserstoffverbrauch kombiniert: … kg/100 km; CO₂-Emissionen kombiniert: 0 g/km; CO₂-Klasse: A“
 
+Der Begriff „Energieverbrauch" ist dabei bewusst der Oberbegriff und gilt für alle Antriebsarten. § 2 Absatz 1 Nummer 17 Pkw-EnVKV definiert ihn als den Verbrauch an Kraftstoff, Wasserstoff oder elektrischer Energie. Der Fragen-und-Antworten-Katalog des Kfz-Gewerbes stellt zu Frage 21 klar: „Der Begriff des Energieverbrauchs ersetzt keineswegs den Begriff des Kraftstoffverbrauchs im Rahmen der Kennzeichnung. Er ist ein Überbegriff […] In der Werbung ist indes ausschließlich der Energieverbrauch maßgeblich." Im Hinweis nach Anlage 1 stehen dagegen beide Begriffe: „Energieverbrauch" im zweiten Kasten, „Kraftstoffverbrauch" beziehungsweise „Stromverbrauch" rechts unter den weiteren Angaben.
+
+Eine allgemein verständliche Fassung dieser Begründung für Mitarbeitende steht in `werbung-pflichtangaben.md`.
+
 Für das Produkt sollte der genaue gesetzliche Wortlaut abschließend anhand der Herstellerfreigabe vereinheitlicht werden. Insbesondere beim PHEV dürfen gewichtet kombinierte Werte und Werte bei entladener Batterie niemals vermischt werden.
 
 ## 4. Einzelvariante gegenüber Modell mit mehreren Varianten
