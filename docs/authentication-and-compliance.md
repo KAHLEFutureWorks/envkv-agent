@@ -119,7 +119,13 @@ Hinweis nach Anlage 1 und die Modellspanne.
 
 ## Aufbau des Anlage-1-Hinweises
 
-Der Hinweis wird im vorgeschriebenen Format DIN A4 quer erzeugt. Der zweite
+Der Hinweis wird in DIN A4 hoch erzeugt, wie die Labels des Herstellers. Die
+Rechtsmatrix nennt an dieser Stelle Querformat; der Widerspruch ist dort
+vermerkt und Teil der offenen rechtlichen Prüfung.
+
+Die Klassenpfeile und die Klassenmarke tragen `print-color-adjust: exact`. Ohne
+diese Angabe lassen Browser beim Drucken alle Hintergrundfarben weg, und die
+Pfeile erschienen leer. Der zweite
 Kasten enthält ausschließlich Verbrauch, CO₂-Emissionen und, sofern vorhanden,
 die elektrische Reichweite. Energiekosten und Kraftfahrzeugsteuer stehen im
 vierten Kasten und werden nicht wiederholt. Die Fußnotenverweise sind fest
@@ -142,3 +148,9 @@ entsteht bei Bedarf über die Druckansicht des Browsers.
 Offen bleibt die visuelle Konformitätsprüfung gegen das amtliche Muster. Die
 Längen der Klassenpfeile beruhen auf dem Abgleich mit dem Herstellerlabel, nicht
 auf den verbindlichen Maßen aus Anlage 1.
+
+Ebenfalls offen: Der Hinweis ist derzeit rund 369 mm hoch und passt damit nicht
+auf eine Seite (verfügbar sind 283 mm). Ihn auf eine Seite zu bringen erfordert
+kleinere Schriftgrade für Fließtext und Fußnoten. Welche Mindestgrößen Anlage 1
+vorschreibt, muss die rechtliche Prüfung festlegen; bis dahin bleibt die Ausgabe
+zweiseitig, wobei die Kästen dank `break-inside: avoid` nicht zerrissen werden.

@@ -353,7 +353,7 @@ class EnVKVCalculationTests(unittest.TestCase):
         self.assertNotIn("Kraftfahrzeugsteuer", table)
         self.assertIn("<sup>1)</sup>", table)
         # Format und Fussnotenverweise wie im Herstellerlabel.
-        self.assertIn("A4 landscape", html)
+        self.assertIn("A4 portrait", html)
         self.assertIn("<sup>2)</sup>", html)
         self.assertIn("EUR/l Jahresdurchschnitt", html)
 

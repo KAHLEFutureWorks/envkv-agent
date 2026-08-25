@@ -39,33 +39,36 @@ _CSS_GUARDS = (
 )
 
 _CSS_RULES = (
-    ("", "font:12pt Arial,sans-serif;color:#000;background:#fff;max-width:283mm;margin:7mm auto;line-height:normal;text-align:left"),
+    # print-color-adjust ist vererbbar und sorgt dafuer, dass die Klassenpfeile
+    # auch im Ausdruck farbig erscheinen. Ohne diese Angabe lassen Browser
+    # Hintergrundfarben weg, und die Pfeile blieben leer.
+    ("", "font:12pt Arial,sans-serif;color:#000;background:#fff;max-width:196mm;margin:7mm auto;line-height:normal;text-align:left;print-color-adjust:exact;-webkit-print-color-adjust:exact"),
     (" *", "box-sizing:border-box"),
     (" h1", "font-size:26pt;line-height:1.05;margin:0 0 10px"),
-    (" .box", "border:1.5px solid #172033;margin:0 0 9px;padding:10px"),
+    (" .box", "border:1.5px solid #172033;margin:0 0 9px;padding:10px;break-inside:avoid;page-break-inside:avoid"),
     (" .head", "display:grid;grid-template-columns:1fr 1fr;gap:7px 22px;font-size:14pt"),
     (" .head span:nth-child(even)", "text-align:right"),
     (" table", "width:100%;border-collapse:collapse;font-size:14pt"),
     (" th,.{root} td", "padding:5px;text-align:left"),
     (" td", "font-weight:bold;text-align:right"),
     (" .middle", "display:grid;grid-template-columns:1fr 1fr;padding:0;font-size:12pt"),
-    (" .middle>section", "padding:10px;min-height:275px"),
+    (" .middle>section", "padding:10px"),
     (" .middle>section+section", "border-left:1.5px solid #172033"),
     (" h2", "font-size:16pt;margin:0 0 8px"),
     (" h3", "font-size:12pt;margin:8px 0 2px"),
     # Der Pfeil besteht aus einer schwarzen Grundfläche und einer leicht
     # eingerückten farbigen Füllung. Eine Umrandung liesse sich nicht darstellen,
     # weil clip-path jeden Rahmen mit abschneidet.
-    (" .arrow", "position:relative;height:29px;margin:4px 0;padding:7px 10px;background:#000;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)"),
-    (" .arrow-fill", "position:absolute;left:1.5px;top:1.5px;right:1.5px;bottom:1.5px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)"),
+    (" .arrow", "position:relative;height:29px;margin:4px 0;padding:7px 10px;background:#000;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%);print-color-adjust:exact;-webkit-print-color-adjust:exact"),
+    (" .arrow-fill", "position:absolute;left:1.5px;top:1.5px;right:1.5px;bottom:1.5px;clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%);print-color-adjust:exact;-webkit-print-color-adjust:exact"),
     (" .arrow b", "position:relative;color:#fff;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000,0 0 1px #000"),
     # Die Klassenmarke steht in derselben Rasterzeile wie ihr Pfeil und sitzt
     # dadurch immer auf der Höhe der zutreffenden Klasse.
-    (" .scale", "display:grid;align-items:center;row-gap:0;column-gap:0"),
+    (" .scale", "display:grid;align-items:center;row-gap:0;column-gap:0;break-inside:avoid;page-break-inside:avoid"),
     (" .scale-head", "font-size:9pt;text-align:center;padding:0 6px 4px;align-self:end"),
     (" .scale-cell", "text-align:center;padding:0 6px;height:100%;display:flex;align-items:center;justify-content:center"),
     (" .scale-cell.divided,.{root} .scale-head.divided", "border-left:1.5px solid #172033"),
-    (" .badge", "background:#07162e;color:#fff;font:bold 21px Arial;padding:9px 14px;clip-path:polygon(18px 0,100% 0,100% 100%,18px 100%,0 50%);text-align:center;min-width:66px"),
+    (" .badge", "background:#07162e;color:#fff;font:bold 21px Arial;padding:9px 14px;clip-path:polygon(18px 0,100% 0,100% 100%,18px 100%,0 50%);text-align:center;min-width:66px;print-color-adjust:exact;-webkit-print-color-adjust:exact"),
     (" .details .row,.{root} .cost-row", "display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:3px 0"),
     # Ohne diese beiden Regeln zerreißt es lange Bezeichnungen und Messwerte.
     (" .details .row>span,.{root} .details .row>b:first-child", "flex:1 1 auto;min-width:0"),
@@ -272,7 +275,7 @@ def _sheet_title(sheet: dict[str, Any]) -> str:
 def render_data_sheet_html(sheet: dict[str, Any]) -> str:
     """Vollständige A4-Seite zum Ansehen, Drucken und Speichern."""
     page_css = (
-        "@page{size:A4 landscape;margin:7mm}"
+        "@page{size:A4 portrait;margin:7mm}"
         "body{margin:0}"
         "button{padding:10px 18px;margin-bottom:12px}"
         "@media print{button{display:none}}"

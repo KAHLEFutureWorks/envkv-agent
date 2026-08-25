@@ -1,7 +1,11 @@
-/* Der Hinweis nach Anlage 1 wird im vorgeschriebenen Format A4 quer gedruckt. */
-@page { size: A4 landscape; margin: 7mm; }
+/* Der Hinweis wird im Hochformat gedruckt, wie die Labels des Herstellers. */
+@page { size: A4 portrait; margin: 7mm; }
 
-body { margin: 0; background: #fff; font-family: Inter, "Segoe UI", sans-serif; }
+body {
+  margin: 0; background: #fff; font-family: Inter, "Segoe UI", sans-serif;
+  /* Ohne diese Angabe druckt der Browser die Farbflaechen der Klassenpfeile nicht. */
+  print-color-adjust: exact; -webkit-print-color-adjust: exact;
+}
 
 .toolbar { padding: 14px 16px; display: flex; align-items: center; gap: 14px; }
 
@@ -14,4 +18,9 @@ body { margin: 0; background: #fff; font-family: Inter, "Segoe UI", sans-serif; 
 #print-hint { color: #8a1820; font-size: 13px; }
 
 /* Beim Drucken darf ausschliesslich der gesetzliche Hinweis erscheinen. */
-@media print { .toolbar { display: none; } body { margin: 0; } }
+@media print {
+  .toolbar { display: none; }
+  body { margin: 0; }
+  /* Der Hinweis gehoert auf eine Seite und darf nicht zerrissen werden. */
+  #sheet { break-inside: avoid; }
+}

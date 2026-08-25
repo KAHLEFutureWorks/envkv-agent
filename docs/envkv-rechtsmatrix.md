@@ -99,6 +99,12 @@ Für konkrete Fernabsatzangebote reicht der kopierbare Fließtext nicht. Zusätz
 ### Verbindliche Darstellungsmerkmale
 
 - Format 297 mm x 210 mm, also DIN A4 quer.
+
+  > **Offener Widerspruch, Stand 25.08.2026:** Die Labels, die Volkswagen für
+  > dieselben Fahrzeuge ausgibt, sind im Hochformat gehalten, ebenso das
+  > klassische Pkw-Label am Verkaufsort. Die Ausgabe des Agenten erfolgt daher
+  > vorerst in DIN A4 hoch. Welche Angabe zutrifft, muss die rechtliche Prüfung
+  > anhand des amtlichen Musters klären.
 - Einheitlicher Aufbau nach dem passenden Muster 1 bis 5.
 - Überschrift „Information über den Energieverbrauch und die CO₂-Emissionen des neuen Pkw“ in 26 pt fett.
 - Grundsätzlich schwarze Angaben auf weißem Hintergrund.

@@ -13,6 +13,32 @@ let outputText = "";
 let rangeOutputText = "";
 let selectedTypeId: string | undefined;
 
+async function copyToClipboard(text: string): Promise<void> {
+  try {
+    await navigator.clipboard.writeText(text);
+    return;
+  } catch {
+    // Nach einem Netzabruf ist die Nutzeraktivierung abgelaufen; die
+    // Zwischenablage-API verweigert dann den Zugriff. Der folgende Weg
+    // funktioniert auch dann und ist durch die Berechtigung clipboardWrite
+    // abgedeckt.
+  }
+  const area = document.createElement("textarea");
+  area.value = text;
+  area.setAttribute("readonly", "");
+  area.style.position = "fixed";
+  area.style.top = "0";
+  area.style.opacity = "0";
+  document.body.appendChild(area);
+  area.select();
+  area.setSelectionRange(0, text.length);
+  const copied = document.execCommand("copy");
+  area.remove();
+  if (!copied) {
+    throw new Error("Der Text konnte nicht in die Zwischenablage gelegt werden.");
+  }
+}
+
 function decimal(value: number, digits = 1): string {
   return new Intl.NumberFormat("de-DE", { minimumFractionDigits: digits, maximumFractionDigits: digits }).format(value);
 }
@@ -176,8 +202,15 @@ form.addEventListener("submit", async (event) => {
 });
 
 byId<HTMLButtonElement>("copy-button").addEventListener("click", async () => {
-  await navigator.clipboard.writeText(outputText);
-  byId("copy-feedback").textContent = "✓ Verbrauchstext kopiert";
+  const feedback = byId("copy-feedback");
+  try {
+    await copyToClipboard(outputText);
+    feedback.textContent = "✓ Verbrauchstext kopiert";
+    feedback.className = "copy-feedback success-text";
+  } catch (error) {
+    feedback.textContent = error instanceof Error ? error.message : "Kopieren nicht möglich.";
+    feedback.className = "copy-feedback error-text";
+  }
 });
 byId<HTMLButtonElement>("settings-button").addEventListener("click", () => chrome.runtime.openOptionsPage());
 
