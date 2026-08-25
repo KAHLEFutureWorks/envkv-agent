@@ -30,6 +30,7 @@ export type ComplianceResult = {
   confidence: number;
   powertrain: string;
   usage_context: UsageContext;
+  declared_co2_g_km?: number;
   notice?: string;
   vehicle: {
     brand: string;

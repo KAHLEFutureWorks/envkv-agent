@@ -14,6 +14,7 @@ from backend.app.domain.envkv import (
     render_model_range_text,
     calculate_energy_costs,
     build_data_sheet,
+    declared_co2_g_km,
     decimal_safe_dict,
     render_compliance_text,
 )
@@ -83,6 +84,7 @@ class ComplianceService:
             "scope": {"vehicle_status": "new", "vehicle_class": verified.vehicle.vehicle_class},
             "vehicle": decimal_safe_dict(verified.vehicle),
             "consumption": decimal_safe_dict(verified.consumption),
+            "declared_co2_g_km": decimal_safe_dict(declared_co2_g_km(verified.consumption.co2_g_km)),
             "energy_costs": decimal_safe_dict(costs),
             "output_text": output_text,
             "source": decimal_safe_dict(verified.source),

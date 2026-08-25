@@ -167,7 +167,9 @@ function showResult(data: ComplianceResult): void {
     ? `${decimal(fuel)} l + ${decimal(electric)} kWh/100 km`
     : electric !== null ? `${decimal(electric)} kWh/100 km`
     : `${decimal(fuel ?? 0)} l/100 km`;
-  byId("co2").textContent = `${decimal(data.consumption.co2_g_km)} g/km`;
+  // Ausgewiesen wird der ganzzahlige Wert, damit Kachel und Verbrauchstext
+  // nicht auseinanderfallen.
+  byId("co2").textContent = `${decimal(data.declared_co2_g_km ?? data.consumption.co2_g_km, 0)} g/km`;
   byId("co2-class").textContent = data.consumption.co2_class_discharged
     ? `${data.consumption.co2_class} / ${data.consumption.co2_class_discharged}`
     : data.consumption.co2_class;
@@ -236,9 +238,52 @@ async function openPrintView(): Promise<void> {
   }
 }
 
+byId<HTMLButtonElement>("copy-snippet").addEventListener("click", async () => {
+  const feedback = byId("snippet-feedback");
+  const fallback = byId<HTMLTextAreaElement>("snippet-fallback");
+  fallback.classList.add("hidden");
+  feedback.textContent = "Einbettbarer Hinweis wird erstellt \u2026";
+  feedback.className = "copy-feedback";
+
+  let snippet = "";
+  try {
+    snippet = await fetchDataSheetSnippet(
+      input.value.trim(), usageContext.value as UsageContext, selectedTypeId,
+    );
+  } catch (error) {
+    feedback.textContent = error instanceof Error && error.message === "missing_configuration"
+      ? "Bitte zuerst die Verbindung zum KAHLE-Dienst einrichten."
+      : error instanceof Error ? error.message : "Der einbettbare Hinweis konnte nicht erstellt werden.";
+    feedback.className = "copy-feedback error-text";
+    return;
+  }
+
+  try {
+    await copyToClipboard(snippet);
+    feedback.textContent = "\u2713 HTML kopiert. Bei der Fahrzeugbeschreibung des Angebots einfügen.";
+    feedback.className = "copy-feedback success-text";
+  } catch {
+    // Der Hinweis liegt vor, nur der Browser lässt das Schreiben nicht zu.
+    // Er wird deshalb zum manuellen Kopieren angeboten statt verworfen.
+    fallback.value = snippet;
+    fallback.classList.remove("hidden");
+    fallback.focus();
+    fallback.select();
+    feedback.textContent = "Der Browser hat das automatische Kopieren abgelehnt. Der Text unten ist markiert \u2013 bitte mit Strg+C kopieren.";
+    feedback.className = "copy-feedback error-text";
+  }
+});
+
 byId<HTMLButtonElement>("open-data-sheet").addEventListener("click", () => void openPrintView());
 
 byId<HTMLButtonElement>("range-copy").addEventListener("click", async () => {
-  await navigator.clipboard.writeText(rangeOutputText);
-  byId("range-copy-feedback").textContent = "✓ Verbrauchstext kopiert";
+  const feedback = byId("range-copy-feedback");
+  try {
+    await copyToClipboard(rangeOutputText);
+    feedback.textContent = "\u2713 Verbrauchstext kopiert";
+    feedback.className = "copy-feedback success-text";
+  } catch {
+    feedback.textContent = "Kopieren nicht möglich. Der Text lässt sich oben markieren und mit Strg+C kopieren.";
+    feedback.className = "copy-feedback error-text";
+  }
 });
