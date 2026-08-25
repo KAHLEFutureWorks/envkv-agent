@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+  <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>KAHLE EnVKV Agent</title><link rel="stylesheet" href="styles.css"></head>
+  <body>
+    <main class="shell">
+      <header><div class="eyebrow">KAHLE GRUPPE</div><h1>EnVKV Agent</h1><p>Geprüfte Verbrauchsdaten für deine Fahrzeugwerbung.</p></header>
+      <form id="vehicle-form" class="card input-card">
+        <p class="scope-note">Verbrauchstexte werden aus bestätigten Herstellerdaten erstellt. Das EnVKV-Angebotsdatenblatt ist ausschließlich für neue Pkw der Klasse M1 bestimmt.</p>
+        <label for="vehicle-name">Fahrzeugbezeichnung</label>
+        <textarea id="vehicle-name" rows="4" required minlength="2" maxlength="300" placeholder="ID.5 Pure 140 kW (190 PS) 58 kWh 1-Gang-Automatik"></textarea>
+        <label for="usage-context">Verwendungszweck</label>
+        <select id="usage-context">
+          <option value="advertising">Fahrzeugwerbung</option>
+          <option value="social_media">Social Media</option>
+          <option value="online_offer">Konkretes Onlineangebot</option>
+          <option value="leasing_offer">Konkretes Leasingangebot</option>
+        </select>
+        <button id="submit-button" type="submit">Fahrzeug prüfen</button>
+      </form>
+      <section id="message" class="message hidden" role="status"></section>
+      <section id="range-result" class="hidden">
+        <div class="verified">✓ Spanne über alle Varianten</div>
+        <div class="card"><h2 id="range-title"></h2><p id="range-meta" class="meta"></p><p class="legal-note">Die Angaben umfassen den vollständigen aktuell angebotenen Variantenbestand dieses Modells. Für ein konkretes Angebot ist stattdessen eine einzelne Variante zu wählen.</p></div>
+        <div class="card"><h2>Verbrauchstext</h2><pre id="range-output"></pre><button id="range-copy" type="button">Text kopieren</button><p id="range-copy-feedback" class="copy-feedback" aria-live="polite"></p></div>
+        <details class="source"><summary>Quelle und Nachweis</summary><dl><dt>Quelle</dt><dd id="range-provider"></dd><dt>Varianten</dt><dd id="range-types"></dd><dt>Modelljahre</dt><dd id="range-years"></dd><dt>Abruf</dt><dd id="range-time"></dd></dl></details>
+      </section>
+      <section id="result" class="hidden">
+        <div class="verified">✓ Fahrzeug eindeutig identifiziert</div>
+        <div id="scope-notice" class="scope-warning hidden"></div>
+        <div class="card"><h2 id="vehicle-title"></h2><p id="vehicle-meta" class="meta"></p><dl class="values"><div><dt id="consumption-label">Verbrauch</dt><dd id="consumption"></dd></div><div><dt>CO₂</dt><dd id="co2"></dd></div><div><dt>CO₂-Klasse</dt><dd id="co2-class"></dd></div><div id="range-row"><dt>Reichweite</dt><dd id="range"></dd></div></dl></div>
+        <div class="card"><h2>Verbrauchstext</h2><pre id="output-text"></pre><button id="copy-button" type="button">Text kopieren</button><p id="copy-feedback" class="copy-feedback" aria-live="polite"></p></div>
+        <div id="data-sheet-actions" class="card hidden"><h2>EnVKV-Hinweis für das Angebot</h2><p class="legal-note">Der vollständige Hinweis muss im finalen Online- oder Leasingangebot direkt bei der Fahrzeugbeschreibung sichtbar eingebunden werden. Ein Download-Link allein reicht nicht aus.</p><button id="copy-snippet" type="button">HTML zum Einbetten kopieren</button><p id="snippet-feedback" class="copy-feedback" aria-live="polite"></p><p class="legal-note">Der kopierte Ausschnitt bringt seine Gestaltung mit, benötigt keine weiteren Dateien und verändert die Zielseite nicht. Druckansicht und PDF sind nur eine Ergänzung.</p><button id="open-data-sheet" type="button">Druckansicht öffnen</button><button id="download-data-sheet" type="button">PDF herunterladen</button></div>
+        <details class="source"><summary>Quelle und Nachweis</summary><dl><dt>Quelle</dt><dd id="source-provider"></dd><dt>Typ</dt><dd id="source-type"></dd><dt>Modelljahr</dt><dd id="source-year"></dd><dt>Abruf</dt><dd id="source-time"></dd></dl></details>
+      </section>
+      <footer><button id="settings-button" class="link-button" type="button">Verbindung einrichten</button></footer>
+    </main>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>

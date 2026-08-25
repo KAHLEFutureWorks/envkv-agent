@@ -1,0 +1,5 @@
+-r requirements.txt
+
+# httpx wird von fastapi.testclient.TestClient benötigt und ist deshalb nur für
+# die Testausführung erforderlich, nicht im Produktivbild.
+httpx>=0.28,<1

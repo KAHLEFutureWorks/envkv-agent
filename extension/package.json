@@ -1,0 +1,14 @@
+{
+  "name": "kahle-envkv-extension",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0",
+    "typescript": "^5.8.0",
+    "@types/chrome": "^0.0.315"
+  }
+}

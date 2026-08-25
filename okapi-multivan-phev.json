@@ -1,0 +1,712 @@
+﻿{
+  "retrieved_at": "2026-08-20T12:14:31.169379+00:00",
+  "market": "DE",
+  "brand": {
+    "id": "d943e4ad-329f-5c99-904b-92098209e211",
+    "name": "Volkswagen Commercial Vehicles"
+  },
+  "models": [
+    {
+      "id": "c186f6bb-ce53-5e69-9456-64f9af401740",
+      "name": "Der neue Multivan",
+      "code": "MODEL:70000_70065",
+      "types": [
+        {
+          "id": "d712854a-ea62-53a3-86ec-2c9effcc9bfe",
+          "name": "Multivan Life \"Generation\" Motor: 1,5 l eHybrid OPF 4MOTION 130 kW 100 kW  19,7 kWh Getriebe: 6-Gang-Doppelkupplungsgetriebe Radstand: 3124 mm L▄ langer ▄berhang",
+          "model_year": "2027",
+          "modelyear_code": "MODELYEAR:2027",
+          "code": "TYPE:SUNGH9-GR25R25-GWF2WF2-GYVZYVZ-GY0DY0D-GZVIZVI-GZV7ZV7-GZ0MZ0M-GZ3NZ3N-MVBK1T9",
+          "basetype_code": "BASETYPE:SUNGH9",
+          "shortener_code": "SHORTENER:N17",
+          "extensions": [
+            {
+              "code": "PACKET:R25",
+              "description": "Vorbereitet f³r VW Connect und VW Connect Plus"
+            },
+            {
+              "code": "PACKET:WF2",
+              "description": "Deutschland"
+            },
+            {
+              "code": "PACKET:YVZ",
+              "description": "Steuerung Vertrieb"
+            },
+            {
+              "code": "PACKET:Y0D",
+              "description": "5 Jahre Herstellergarantie"
+            },
+            {
+              "code": "PACKET:ZVI",
+              "description": "Assistenzpaket Advanced"
+            },
+            {
+              "code": "PACKET:ZV7",
+              "description": "Sitzheizung vorne, Frontscheibe und Multifunktions-Lederlenkrad beheizbar"
+            },
+            {
+              "code": "PACKET:Z0M",
+              "description": "Leichtmetallrõder \"Br³ssel\" 7,5J x 18, in Schwarz, Oberflõche glanzgedreht"
+            },
+            {
+              "code": "PACKET:Z3N",
+              "description": "\"GENERATION\""
+            },
+            {
+              "code": "VBK:1T9",
+              "description": "Verbandmaterial mit Warndreieck und Warnweste"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "selected_type": {
+    "id": "d712854a-ea62-53a3-86ec-2c9effcc9bfe",
+    "name": "Multivan Life \"Generation\" Motor: 1,5 l eHybrid OPF 4MOTION 130 kW 100 kW  19,7 kWh Getriebe: 6-Gang-Doppelkupplungsgetriebe Radstand: 3124 mm L▄ langer ▄berhang",
+    "model_year": "2027",
+    "modelyear_code": "MODELYEAR:2027",
+    "code": "TYPE:SUNGH9-GR25R25-GWF2WF2-GYVZYVZ-GY0DY0D-GZVIZVI-GZV7ZV7-GZ0MZ0M-GZ3NZ3N-MVBK1T9",
+    "basetype_code": "BASETYPE:SUNGH9",
+    "shortener_code": "SHORTENER:N17",
+    "extensions": [
+      {
+        "code": "PACKET:R25",
+        "description": "Vorbereitet f³r VW Connect und VW Connect Plus"
+      },
+      {
+        "code": "PACKET:WF2",
+        "description": "Deutschland"
+      },
+      {
+        "code": "PACKET:YVZ",
+        "description": "Steuerung Vertrieb"
+      },
+      {
+        "code": "PACKET:Y0D",
+        "description": "5 Jahre Herstellergarantie"
+      },
+      {
+        "code": "PACKET:ZVI",
+        "description": "Assistenzpaket Advanced"
+      },
+      {
+        "code": "PACKET:ZV7",
+        "description": "Sitzheizung vorne, Frontscheibe und Multifunktions-Lederlenkrad beheizbar"
+      },
+      {
+        "code": "PACKET:Z0M",
+        "description": "Leichtmetallrõder \"Br³ssel\" 7,5J x 18, in Schwarz, Oberflõche glanzgedreht"
+      },
+      {
+        "code": "PACKET:Z3N",
+        "description": "\"GENERATION\""
+      },
+      {
+        "code": "VBK:1T9",
+        "description": "Verbandmaterial mit Warndreieck und Warnweste"
+      }
+    ]
+  },
+  "configuration": {
+    "brand_id": "d943e4ad-329f-5c99-904b-92098209e211",
+    "model_id": "c186f6bb-ce53-5e69-9456-64f9af401740",
+    "options": [
+      {
+        "id": "c4d07617-deb3-52e5-a629-0cb55f50e5ec"
+      },
+      {
+        "id": "08db3287-cafa-52e4-a21b-051dd854bbdf"
+      },
+      {
+        "id": "22eb9815-229f-5ed1-8210-1ccfd4a4702b"
+      },
+      {
+        "id": "d712854a-ea62-53a3-86ec-2c9effcc9bfe"
+      }
+    ]
+  },
+  "configuration_check": {
+    "buildable": true,
+    "distinct": true
+  },
+  "wltp": {
+    "data": [
+      {
+        "wltp_metadata": {
+          "status": 200
+        },
+        "wltp_value": [
+          {
+            "data_version": "1",
+            "vehicle_class": "CLASS_3B",
+            "engine_type": "OVC_HEV",
+            "fuel_types": [
+              "PETROL",
+              "ELECTRICAL"
+            ],
+            "coc_nr": "MCOCC17",
+            "general_data": {
+              "values": [
+                {
+                  "key": "TIRE_ROLLING_RESISTANCE_TOTAL",
+                  "value": 5.9,
+                  "unit": "0/00"
+                },
+                {
+                  "key": "TIRE_ROLLING_RESISTANCE_FRONT",
+                  "value": 5.9,
+                  "unit": "0/00"
+                },
+                {
+                  "key": "TIRE_ROLLING_RESISTANCE_REAR",
+                  "value": 5.9,
+                  "unit": "0/00"
+                },
+                {
+                  "key": "DRAG_COEFFICIENT",
+                  "value": 0.31,
+                  "unit": ""
+                },
+                {
+                  "key": "FRONT_SURFACE_A",
+                  "value": 3.28,
+                  "unit": "m2"
+                },
+                {
+                  "key": "AERODYNAMIC_DRAG",
+                  "value": 1.016,
+                  "unit": "m2"
+                },
+                {
+                  "key": "MASS_VEHICLE",
+                  "value": 2340.027,
+                  "unit": "kg"
+                },
+                {
+                  "key": "MASS_VEHICLE_FRONT",
+                  "value": 1255.608,
+                  "unit": "kg"
+                },
+                {
+                  "key": "MASS_VEHICLE_REAR",
+                  "value": 1084.419,
+                  "unit": "kg"
+                },
+                {
+                  "key": "MASS_ACTUAL",
+                  "value": 2415.027,
+                  "unit": "kg"
+                },
+                {
+                  "key": "TEST_MASS_VEHICLE",
+                  "value": 2503.927,
+                  "unit": "kg"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F0",
+                  "value": 190.5500341306316,
+                  "unit": "N"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F1",
+                  "value": -0.233,
+                  "unit": "N/(km/h)"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F2",
+                  "value": 0.049360573085451,
+                  "unit": "N/(km/h)2"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F0_H",
+                  "value": 207.9,
+                  "unit": "N"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F1_H",
+                  "value": -0.233,
+                  "unit": "N/(km/h)"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F2_H",
+                  "value": 0.0548,
+                  "unit": "N/(km/h)2"
+                },
+                {
+                  "key": "DRAG_COEFFICIENT_H",
+                  "value": 0.345,
+                  "unit": ""
+                },
+                {
+                  "key": "FRONT_SURFACE_A_H",
+                  "value": 3.28,
+                  "unit": "m2"
+                },
+                {
+                  "key": "AERODYNAMIC_DRAG_H",
+                  "value": 1.1316,
+                  "unit": "m2"
+                },
+                {
+                  "key": "TEST_MASS_VEHICLE_H",
+                  "value": 2816.0,
+                  "unit": "kg"
+                },
+                {
+                  "key": "HIGH_TYPING",
+                  "value": 0.0,
+                  "unit": ""
+                }
+              ]
+            },
+            "rl_family": {
+              "name": "RL-DQ400E6F_23_701-WVN",
+              "calc_algorithm": "RLF"
+            },
+            "ip_family": {
+              "name": "IP-VN41TZZ_A1_0478-WVN",
+              "status": "Extern"
+            },
+            "calc_algorithm": "RLF",
+            "tire": {
+              "front": {
+                "eeclass": "A",
+                "category": "C1"
+              },
+              "rear": {
+                "eeclass": "A",
+                "category": "C1"
+              }
+            },
+            "cycle_modifications": {
+              "values": []
+            },
+            "interpolations": [
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "WEIGHTED",
+                "phase": "COMBINED",
+                "value": 158.4043695638484,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "LOW",
+                "value": 219.8695754886155,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "MEDIUM",
+                "value": 218.45308997601256,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "HIGH",
+                "value": 218.37337241875204,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "EXTRA_HIGH",
+                "value": 293.1808071516445,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "CITY",
+                "value": 218.69824803926565,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "COMBINED",
+                "value": 241.9031521695925,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "DEPLETING",
+                "phase": "COMBINED",
+                "value": 0.711149999933007,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "RANGE",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "EQUIV_ALL_EL_RANGE",
+                "phase": "CITY",
+                "value": 99.78739888588846,
+                "unit": "km"
+              },
+              {
+                "value_type": "RANGE",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "EQUIV_ALL_EL_RANGE",
+                "phase": "COMBINED",
+                "value": 90.48732608892747,
+                "unit": "km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "DEPLETING",
+                "phase": "COMBINED",
+                "value": 17.84856521550774,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "LOW",
+                "value": 205.88981317164468,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "MEDIUM",
+                "value": 167.81737306515925,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "HIGH",
+                "value": 151.05210716225503,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "EXTRA_HIGH",
+                "value": 184.26418583777584,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "COMBINED",
+                "value": 173.61558695363814,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "WEIGHTED",
+                "phase": "COMBINED",
+                "value": 2.805710434686683,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "LOW",
+                "value": 9.067488055731168,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "MEDIUM",
+                "value": 7.394357506065519,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "HIGH",
+                "value": 6.657702185680925,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "EXTRA_HIGH",
+                "value": 8.117129047814322,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "COMBINED",
+                "value": 7.648957608568949,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "WEIGHTED",
+                "phase": "COMBINED",
+                "value": 63.69248912825509,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "RANGE",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "ALL_ELECTRIC_RANGE",
+                "phase": "CITY",
+                "value": 102.70851939771983,
+                "unit": "km"
+              },
+              {
+                "value_type": "RANGE",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "ALL_ELECTRIC_RANGE",
+                "phase": "COMBINED",
+                "value": 90.47591304569194,
+                "unit": "km"
+              }
+            ],
+            "nedc": {
+              "values": []
+            },
+            "energy_efficiency": {
+              "class_nedc": "",
+              "class_wltp": "B",
+              "iso": "DE"
+            },
+            "energy_efficiency_2": {
+              "class_nedc": "",
+              "class_wltp": "F",
+              "iso": "DE"
+            },
+            "vehicle_high": [
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "WEIGHTED",
+                "phase": "COMBINED",
+                "value": 166.8,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "LOW",
+                "value": 239.2,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "MEDIUM",
+                "value": 236.9,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "HIGH",
+                "value": 245.9,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "EXTRA_HIGH",
+                "value": 328.5,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "CITY",
+                "value": 237.8,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "COMBINED",
+                "value": 268.4,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "DEPLETING",
+                "phase": "COMBINED",
+                "value": 1.122,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "RANGE",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "EQUIV_ALL_EL_RANGE",
+                "phase": "CITY",
+                "value": 88.5,
+                "unit": "km"
+              },
+              {
+                "value_type": "RANGE",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "EQUIV_ALL_EL_RANGE",
+                "phase": "COMBINED",
+                "value": 78.4,
+                "unit": "km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "DEPLETING",
+                "phase": "COMBINED",
+                "value": 29.4,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "LOW",
+                "value": 227.66,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "MEDIUM",
+                "value": 184.58,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "HIGH",
+                "value": 167.58,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "EXTRA_HIGH",
+                "value": 202.12,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "COMBINED",
+                "value": 191.3,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "WEIGHTED",
+                "phase": "COMBINED",
+                "value": 3.394,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "LOW",
+                "value": 10.024,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "MEDIUM",
+                "value": 8.131,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "HIGH",
+                "value": 7.384,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "EXTRA_HIGH",
+                "value": 8.902,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "COMBINED",
+                "value": 8.426,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "WEIGHTED",
+                "phase": "COMBINED",
+                "value": 77.06,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "RANGE",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "ALL_ELECTRIC_RANGE",
+                "phase": "CITY",
+                "value": 87.7,
+                "unit": "km"
+              },
+              {
+                "value_type": "RANGE",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "ALL_ELECTRIC_RANGE",
+                "phase": "COMBINED",
+                "value": 76.9,
+                "unit": "km"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "meta": {
+      "count": 1
+    }
+  },
+  "normalization_status": "not_yet_supported",
+  "normalization_message": "Der WLTP-Datensatz enthõlt keinen eindeutigen Wert f³r CONSUMPTION/COMBINED."
+}

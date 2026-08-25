@@ -1,0 +1,22 @@
+[
+  {"brand":"Škoda","input":"Skoda Enyaq Essence 60 (61 kWh) 140 kW 1-Gang-Automatik"},
+  {"brand":"Škoda","input":"Škoda Peaq Selection 60 (63 kWh) 150 kW 1-Gang-Automatik"},
+  {"brand":"Volkswagen Nutzfahrzeuge","input":"ID. Buzz Cargo Pro Motor: 210 kW (286 PS) 79 kWh Getriebe: 1-Gang-Automatikgetriebe Radstand: 2989 mm"},
+  {"brand":"Volkswagen Nutzfahrzeuge","input":"ID. Buzz Generation langer Radstand Motor: 210 kW (286 PS) 86 kWh Getriebe: 1-Gang-Automatikgetriebe Radstand: 3239 mm LR"},
+  {"brand":"Volkswagen Nutzfahrzeuge","input":"E-Transporter Kasten Motor: BEV 210 kW 70 kWh Getriebe: 1-Gang-Automatikgetriebe Radstand: 3100 mm KR"},
+  {"brand":"CUPRA","input":"CUPRA Raval Endurance 155 kW (211 PS) 52 kWh"},
+  {"brand":"CUPRA","input":"CUPRA Raval Plus 99 kW (135 PS) 37 kWh"},
+  {"brand":"CUPRA","input":"CUPRA Born 140 kW (190 PS) 58 kWh"},
+  {"brand":"CUPRA","input":"CUPRA Tavascan 140 kW (190 PS) 58 kWh"},
+  {"brand":"Volkswagen Nutzfahrzeuge","input":"Multivan Life Generation 1,5 l eHybrid OPF 4MOTION 130 kW 100 kW 19,7 kWh Getriebe: 6-Gang-Doppelkupplungsgetriebe"},
+  {"brand":"Volkswagen","input":"ID. Cross Life 155 kW (211 PS) 52 kWh 1-Gang-Automatik"},
+  {"brand":"Volkswagen Nutzfahrzeuge","input":"Der neue Caddy Life Generation 5-Sitzer Motor: 1,5 l eHybrid OPF EU6 85 kW 85 kW 19,7 kWh"},
+  {"brand":"Volkswagen","input":"T-Cross Style 1.0 l TSI OPF 85 kW (116 PS) 7-Gang-Doppelkupplungsgetriebe DSG"},
+  {"brand":"Volkswagen","input":"T-Roc Life 1.5 l eTSI OPF 85 kW (116 PS) 7-Gang-Doppelkupplungsgetriebe DSG"},
+  {"brand":"Volkswagen","input":"Golf Variant 1,5 l TSI OPF 85 kW (116 PS) 6-Gang"},
+  {"brand":"Volkswagen","input":"Tiguan 1,5 l eTSI OPF 96 kW (131 PS) 7-Gang-Doppelkupplungsgetriebe DSG"},
+  {"brand":"SEAT","input":"Seat Ateca 1.5 TSI DSG Style ACC LED Navi Sitzh PDC"},
+  {"brand":"SEAT","input":"Seat Arona 1.0 TSI 85 kW FR ACC LED RFK Sitzh PDC"},
+  {"brand":"Škoda","input":"Skoda Fabia 1.0 MPI Selection"},
+  {"brand":"Škoda","input":"Skoda Karoq 1.6 TDI DSG Style"}
+]

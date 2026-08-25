@@ -1,0 +1,41 @@
+services:
+  envkv-api:
+    build:
+      context: .
+    restart: unless-stopped
+    environment:
+      VW_CLIENT_ID: ${VW_CLIENT_ID:?VW_CLIENT_ID muss gesetzt sein}
+      VW_CLIENT_SECRET: ${VW_CLIENT_SECRET:?VW_CLIENT_SECRET muss gesetzt sein}
+      VW_MARKET: ${VW_MARKET:-DE}
+      EXTENSION_API_KEY: ${EXTENSION_API_KEY:?EXTENSION_API_KEY muss gesetzt sein}
+      ENVKV_DATABASE_PATH: /app/data/envkv.sqlite3
+      ENVKV_TIMEZONE: ${ENVKV_TIMEZONE:-Europe/Berlin}
+      TZ: ${ENVKV_TIMEZONE:-Europe/Berlin}
+      CACHE_TTL_SECONDS: ${CACHE_TTL_SECONDS:-86400}
+      OKAPI_MAX_RETRIES: ${OKAPI_MAX_RETRIES:-4}
+      OKAPI_MIN_INTERVAL_SECONDS: ${OKAPI_MIN_INTERVAL_SECONDS:-0.2}
+      AUDIT_RETENTION_DAYS: ${AUDIT_RETENTION_DAYS:-90}
+      ELECTRICITY_PRICE_EUR_KWH: ${ELECTRICITY_PRICE_EUR_KWH:-0.321}
+      ELECTRICITY_REFERENCE_YEAR: ${ELECTRICITY_REFERENCE_YEAR:-2025}
+      PETROL_PRICE_EUR_L: ${PETROL_PRICE_EUR_L:-1.796}
+      DIESEL_PRICE_EUR_L: ${DIESEL_PRICE_EUR_L:-1.649}
+      FUEL_REFERENCE_YEAR: ${FUEL_REFERENCE_YEAR:-2024}
+      ANNUAL_DISTANCE_KM: ${ANNUAL_DISTANCE_KM:-15000}
+      CO2_PRICE_LOW_EUR_T: ${CO2_PRICE_LOW_EUR_T:-60}
+      CO2_PRICE_MEDIUM_EUR_T: ${CO2_PRICE_MEDIUM_EUR_T:-142.5}
+      CO2_PRICE_HIGH_EUR_T: ${CO2_PRICE_HIGH_EUR_T:-220}
+      CO2_COST_PERIOD_YEARS: ${CO2_COST_PERIOD_YEARS:-10}
+    volumes:
+      - envkv-data:/app/data
+    ports:
+      # Nur lokal gebunden. Der oeffentliche Zugriff laeuft ausschliesslich
+      # ueber den gemeinsamen Caddy per HTTPS.
+      - "127.0.0.1:8088:8088"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+volumes:
+  envkv-data:

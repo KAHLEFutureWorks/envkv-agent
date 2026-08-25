@@ -1,0 +1,429 @@
+﻿{
+  "retrieved_at": "2026-08-20T12:08:38.924728+00:00",
+  "market": "DE",
+  "brand": {
+    "id": "d3f207e5-18d8-5bd2-a5fa-a1acc05629fa",
+    "name": "Volkswagen"
+  },
+  "models": [
+    {
+      "id": "f911d1fd-309e-5b9c-822c-49242fb111eb",
+      "name": "Der T-Roc",
+      "code": "MODEL:30100_30702",
+      "types": [
+        {
+          "id": "2dbda444-8d30-55e7-9acc-1ee916c2c574",
+          "name": "T-Roc Trend 1.5 l eTSI 85 kW (116 PS) 7-Gang-Doppelkupplungsgetriebe DSG",
+          "model_year": "2027",
+          "modelyear_code": "MODELYEAR:2027",
+          "code": "TYPE:D412ME-GYOSYOS-GZ01Z01-MLIA8G1",
+          "basetype_code": "BASETYPE:D412ME",
+          "shortener_code": "SHORTENER:F43",
+          "extensions": [
+            {
+              "code": "PACKET:YOS",
+              "description": "Vorbereitet f³r \"VW Connect\" und \"VW Connect Plus\""
+            },
+            {
+              "code": "PACKET:Z01",
+              "description": "Lõnderpaket Deutschland"
+            },
+            {
+              "code": "LIA:8G1",
+              "description": "Fernlichtassistent \"Light Assist\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "75cd76c0-1ab7-57b5-92db-84189f431351",
+      "name": "Das T-Roc Cabriolet",
+      "code": "MODEL:30100_30710",
+      "types": []
+    }
+  ],
+  "selected_type": {
+    "id": "2dbda444-8d30-55e7-9acc-1ee916c2c574",
+    "name": "T-Roc Trend 1.5 l eTSI 85 kW (116 PS) 7-Gang-Doppelkupplungsgetriebe DSG",
+    "model_year": "2027",
+    "modelyear_code": "MODELYEAR:2027",
+    "code": "TYPE:D412ME-GYOSYOS-GZ01Z01-MLIA8G1",
+    "basetype_code": "BASETYPE:D412ME",
+    "shortener_code": "SHORTENER:F43",
+    "extensions": [
+      {
+        "code": "PACKET:YOS",
+        "description": "Vorbereitet f³r \"VW Connect\" und \"VW Connect Plus\""
+      },
+      {
+        "code": "PACKET:Z01",
+        "description": "Lõnderpaket Deutschland"
+      },
+      {
+        "code": "LIA:8G1",
+        "description": "Fernlichtassistent \"Light Assist\""
+      }
+    ]
+  },
+  "configuration": {
+    "brand_id": "d3f207e5-18d8-5bd2-a5fa-a1acc05629fa",
+    "model_id": "f911d1fd-309e-5b9c-822c-49242fb111eb",
+    "options": [
+      {
+        "id": "8e3b2525-7ddd-59e5-b574-1608ac37ae63"
+      },
+      {
+        "id": "cb333f0f-01c7-5b00-b742-b2eae79c3d9a"
+      },
+      {
+        "id": "d45a8340-e766-5bc5-868c-dc3f4f676676"
+      },
+      {
+        "id": "2dbda444-8d30-55e7-9acc-1ee916c2c574"
+      }
+    ]
+  },
+  "configuration_check": {
+    "buildable": true,
+    "distinct": true
+  },
+  "wltp": {
+    "data": [
+      {
+        "wltp_metadata": {
+          "status": 200
+        },
+        "wltp_value": [
+          {
+            "data_version": "2",
+            "vehicle_class": "CLASS_3B",
+            "engine_type": "NOVC_HEV",
+            "fuel_types": [
+              "PETROL"
+            ],
+            "coc_nr": "MCOCC03",
+            "general_data": {
+              "values": [
+                {
+                  "key": "TIRE_ROLLING_RESISTANCE_TOTAL",
+                  "value": 5.9,
+                  "unit": "0/00"
+                },
+                {
+                  "key": "TIRE_ROLLING_RESISTANCE_FRONT",
+                  "value": 5.9,
+                  "unit": "0/00"
+                },
+                {
+                  "key": "TIRE_ROLLING_RESISTANCE_REAR",
+                  "value": 5.9,
+                  "unit": "0/00"
+                },
+                {
+                  "key": "DRAG_COEFFICIENT",
+                  "value": 0.311,
+                  "unit": ""
+                },
+                {
+                  "key": "FRONT_SURFACE_A",
+                  "value": 2.4,
+                  "unit": "m2"
+                },
+                {
+                  "key": "AERODYNAMIC_DRAG",
+                  "value": 0.747,
+                  "unit": "m2"
+                },
+                {
+                  "key": "MASS_VEHICLE",
+                  "value": 1386.23,
+                  "unit": "kg"
+                },
+                {
+                  "key": "MASS_VEHICLE_FRONT",
+                  "value": 843.054,
+                  "unit": "kg"
+                },
+                {
+                  "key": "MASS_VEHICLE_REAR",
+                  "value": 543.176,
+                  "unit": "kg"
+                },
+                {
+                  "key": "MASS_ACTUAL",
+                  "value": 1461.23,
+                  "unit": "kg"
+                },
+                {
+                  "key": "TEST_MASS_VEHICLE",
+                  "value": 1538.43,
+                  "unit": "kg"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F0",
+                  "value": 108.8432348161536,
+                  "unit": "N"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F1",
+                  "value": 0.253,
+                  "unit": "N/(km/h)"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F2",
+                  "value": 0.035067916666667,
+                  "unit": "N/(km/h)2"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F0_H",
+                  "value": 160.3,
+                  "unit": "N"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F1_H",
+                  "value": 0.253,
+                  "unit": "N/(km/h)"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F2_H",
+                  "value": 0.04177,
+                  "unit": "N/(km/h)2"
+                },
+                {
+                  "key": "DRAG_COEFFICIENT_H",
+                  "value": 0.372,
+                  "unit": ""
+                },
+                {
+                  "key": "FRONT_SURFACE_A_H",
+                  "value": 2.4,
+                  "unit": "m2"
+                },
+                {
+                  "key": "AERODYNAMIC_DRAG_H",
+                  "value": 0.8928,
+                  "unit": "m2"
+                },
+                {
+                  "key": "TEST_MASS_VEHICLE_H",
+                  "value": 1719.0,
+                  "unit": "kg"
+                },
+                {
+                  "key": "HIGH_TYPING",
+                  "value": 0.0,
+                  "unit": ""
+                }
+              ]
+            },
+            "rl_family": {
+              "name": "RL-DQ200_7F_25_001-WVW",
+              "calc_algorithm": "RLF"
+            },
+            "ip_family": {
+              "name": "IP-MQB37WS_A0_1350-WVW",
+              "status": "Extern"
+            },
+            "calc_algorithm": "RLF",
+            "tire": {
+              "front": {
+                "eeclass": "A",
+                "category": "C1"
+              },
+              "rear": {
+                "eeclass": "A",
+                "category": "C1"
+              }
+            },
+            "cycle_modifications": {
+              "values": []
+            },
+            "interpolations": [
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "LOW",
+                "value": 158.66838893428127,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "MEDIUM",
+                "value": 116.12748442945446,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "HIGH",
+                "value": 107.4659418299934,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "EXTRA_HIGH",
+                "value": 135.30901764890083,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "COMBINED",
+                "value": 125.82826120424201,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "LOW",
+                "value": 6.960473024749637,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "MEDIUM",
+                "value": 5.096616538642962,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "HIGH",
+                "value": 4.71717594586987,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "EXTRA_HIGH",
+                "value": 5.937278640691158,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "COMBINED",
+                "value": 5.521536555343788,
+                "unit": "l/100km"
+              }
+            ],
+            "nedc": {
+              "values": []
+            },
+            "energy_efficiency": {
+              "class_nedc": "",
+              "class_wltp": "D",
+              "iso": "DE"
+            },
+            "energy_efficiency_2": {
+              "class_nedc": "",
+              "class_wltp": "",
+              "iso": "DE"
+            },
+            "vehicle_high": [
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "LOW",
+                "value": 169.53888116747746,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "MEDIUM",
+                "value": 133.0105976372481,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "HIGH",
+                "value": 126.6476719944406,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "EXTRA_HIGH",
+                "value": 162.86035441278668,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "COMBINED",
+                "value": 146.50000000000003,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "LOW",
+                "value": 7.438005559416262,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "MEDIUM",
+                "value": 5.837602501737319,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "HIGH",
+                "value": 5.558651841556637,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "EXTRA_HIGH",
+                "value": 7.1458200138985415,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "SUSTAINING",
+                "phase": "COMBINED",
+                "value": 6.429100069492704,
+                "unit": "l/100km"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "meta": {
+      "count": 1
+    }
+  },
+  "normalization_status": "not_yet_supported",
+  "normalization_message": "Der WLTP-Datensatz enthõlt keinen eindeutigen Wert f³r CONSUMPTION/COMBINED."
+}

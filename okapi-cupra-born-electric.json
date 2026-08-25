@@ -1,0 +1,376 @@
+﻿{
+  "retrieved_at": "2026-08-20T12:08:16.841821+00:00",
+  "market": "DE",
+  "brand": {
+    "id": "fff2231f-aa29-5393-8005-552303ba30bd",
+    "name": "SEAT"
+  },
+  "models": [
+    {
+      "id": "554ef784-25f3-5b96-b0f4-fbe7b95eefdd",
+      "name": "CUPRA Born",
+      "code": "MODEL:80000_81100",
+      "types": [
+        {
+          "id": "9d9e245d-7e43-54e1-8b6f-00d51b59896c",
+          "name": "CUPRA Born 140 kW (190 PS) 58 kWh",
+          "model_year": "2027",
+          "modelyear_code": "MODELYEAR:2027",
+          "code": "TYPE:K1GCDJ",
+          "basetype_code": "BASETYPE:K1GCDJ",
+          "shortener_code": "SHORTENER:E00",
+          "extensions": []
+        }
+      ]
+    }
+  ],
+  "selected_type": {
+    "id": "9d9e245d-7e43-54e1-8b6f-00d51b59896c",
+    "name": "CUPRA Born 140 kW (190 PS) 58 kWh",
+    "model_year": "2027",
+    "modelyear_code": "MODELYEAR:2027",
+    "code": "TYPE:K1GCDJ",
+    "basetype_code": "BASETYPE:K1GCDJ",
+    "shortener_code": "SHORTENER:E00",
+    "extensions": []
+  },
+  "configuration": {
+    "brand_id": "fff2231f-aa29-5393-8005-552303ba30bd",
+    "model_id": "554ef784-25f3-5b96-b0f4-fbe7b95eefdd",
+    "options": [
+      {
+        "id": "47685e92-9ef1-5478-9784-7bb43b0ecb47"
+      },
+      {
+        "id": "acea7385-b19f-532a-8b7c-daa31eed92ca"
+      },
+      {
+        "id": "26b3bd06-1ad8-52e2-925c-29a289787380"
+      },
+      {
+        "id": "9d9e245d-7e43-54e1-8b6f-00d51b59896c"
+      }
+    ]
+  },
+  "configuration_check": {
+    "buildable": true,
+    "distinct": true
+  },
+  "wltp": {
+    "data": [
+      {
+        "wltp_metadata": {
+          "status": 200
+        },
+        "wltp_value": [
+          {
+            "data_version": "2",
+            "vehicle_class": "CLASS_3B",
+            "engine_type": "PEV",
+            "fuel_types": [
+              "ELECTRICAL"
+            ],
+            "coc_nr": "MCOCC20",
+            "general_data": {
+              "values": [
+                {
+                  "key": "TIRE_ROLLING_RESISTANCE_TOTAL",
+                  "value": 5.9,
+                  "unit": "0/00"
+                },
+                {
+                  "key": "TIRE_ROLLING_RESISTANCE_FRONT",
+                  "value": 5.9,
+                  "unit": "0/00"
+                },
+                {
+                  "key": "TIRE_ROLLING_RESISTANCE_REAR",
+                  "value": 5.9,
+                  "unit": "0/00"
+                },
+                {
+                  "key": "DRAG_COEFFICIENT",
+                  "value": 0.274,
+                  "unit": ""
+                },
+                {
+                  "key": "FRONT_SURFACE_A",
+                  "value": 2.36,
+                  "unit": "m2"
+                },
+                {
+                  "key": "AERODYNAMIC_DRAG",
+                  "value": 0.647,
+                  "unit": "m2"
+                },
+                {
+                  "key": "MASS_VEHICLE",
+                  "value": 1840.842,
+                  "unit": "kg"
+                },
+                {
+                  "key": "MASS_VEHICLE_FRONT",
+                  "value": 889.69,
+                  "unit": "kg"
+                },
+                {
+                  "key": "MASS_VEHICLE_REAR",
+                  "value": 951.152,
+                  "unit": "kg"
+                },
+                {
+                  "key": "MASS_ACTUAL",
+                  "value": 1915.842,
+                  "unit": "kg"
+                },
+                {
+                  "key": "TEST_MASS_VEHICLE",
+                  "value": 1988.392,
+                  "unit": "kg"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F0",
+                  "value": 109.3950167526857,
+                  "unit": "N"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F1",
+                  "value": 0.464,
+                  "unit": "N/(km/h)"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F2",
+                  "value": 0.028248823808958,
+                  "unit": "N/(km/h)2"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F0_H",
+                  "value": 179.9,
+                  "unit": "N"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F1_H",
+                  "value": 0.464,
+                  "unit": "N/(km/h)"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F2_H",
+                  "value": 0.03426,
+                  "unit": "N/(km/h)2"
+                },
+                {
+                  "key": "DRAG_COEFFICIENT_H",
+                  "value": 0.328,
+                  "unit": ""
+                },
+                {
+                  "key": "FRONT_SURFACE_A_H",
+                  "value": 2.37,
+                  "unit": "m2"
+                },
+                {
+                  "key": "AERODYNAMIC_DRAG_H",
+                  "value": 0.77736,
+                  "unit": "m2"
+                },
+                {
+                  "key": "TEST_MASS_VEHICLE_H",
+                  "value": 2177.0,
+                  "unit": "kg"
+                },
+                {
+                  "key": "HIGH_TYPING",
+                  "value": 0.0,
+                  "unit": ""
+                }
+              ]
+            },
+            "rl_family": {
+              "name": "RL-EQ314_1P_25_017-VSS",
+              "calc_algorithm": "RLF"
+            },
+            "ip_family": {
+              "name": "IP-MEB31ZZ_A0_2909-VSS",
+              "status": "Extern"
+            },
+            "calc_algorithm": "RLF",
+            "tire": {
+              "front": {
+                "eeclass": "A",
+                "category": "C1"
+              },
+              "rear": {
+                "eeclass": "A",
+                "category": "C1"
+              }
+            },
+            "cycle_modifications": {
+              "values": []
+            },
+            "interpolations": [
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "LOW",
+                "value": 100.03913829058475,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "MEDIUM",
+                "value": 109.40570679926876,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "HIGH",
+                "value": 129.41678852835082,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "EXTRA_HIGH",
+                "value": 187.90761120708845,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "COMBINED",
+                "value": 142.06486821872255,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "RANGE",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "CITY",
+                "value": 646.2486656064256,
+                "unit": "km"
+              },
+              {
+                "value_type": "RANGE",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "COMBINED",
+                "value": 483.9554132640809,
+                "unit": "km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "COMBINED",
+                "value": 0.0,
+                "unit": "g/km"
+              }
+            ],
+            "nedc": {
+              "values": []
+            },
+            "energy_efficiency": {
+              "class_nedc": "",
+              "class_wltp": "A",
+              "iso": "DE"
+            },
+            "energy_efficiency_2": {
+              "class_nedc": "",
+              "class_wltp": "",
+              "iso": "DE"
+            },
+            "vehicle_high": [
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "LOW",
+                "value": 131.5,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "MEDIUM",
+                "value": 144.8,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "HIGH",
+                "value": 170.8,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "EXTRA_HIGH",
+                "value": 244.0,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "COMBINED",
+                "value": 186.0,
+                "unit": "Wh/km"
+              },
+              {
+                "value_type": "RANGE",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "CITY",
+                "value": 475.6,
+                "unit": "km"
+              },
+              {
+                "value_type": "RANGE",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "COMBINED",
+                "value": 357.0,
+                "unit": "km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "ELECTRICAL",
+                "energy_management_type": "PURE",
+                "phase": "COMBINED",
+                "value": 0.0,
+                "unit": "g/km"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "meta": {
+      "count": 1
+    }
+  },
+  "verified_values": {
+    "combined_kwh_100km": 14.2,
+    "combined_kwh_100km_raw": 14.206486821872256,
+    "co2_g_km": 0.0,
+    "co2_class": "A",
+    "electric_range_km": 484,
+    "electric_range_km_raw": 483.9554132640809,
+    "engine_type": "PEV",
+    "fuel_types": [
+      "ELECTRICAL"
+    ],
+    "data_version": "2"
+  }
+}

@@ -1,0 +1,16 @@
+# Zugangsdaten und Betriebsdaten gehören niemals in die Versionsverwaltung.
+.env
+data/
+*.sqlite3
+
+# Lokale Umgebungen und Zwischenstände
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# Abhängigkeiten und Build-Ergebnisse der Erweiterung.
+# extension/dist wird mit "npm run build" erzeugt; ein eingecheckter Stand
+# könnte gegenüber src veralten und dann eine falsche Version ausgeliefert werden.
+node_modules/
+extension/dist/

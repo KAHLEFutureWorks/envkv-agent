@@ -1,0 +1,7 @@
+{
+  "type": "object",
+  "properties": {
+    "apiUrl": { "type": "string", "title": "Adresse des KAHLE EnVKV Backends" },
+    "apiKey": { "type": "string", "title": "Zugriffsschlüssel des KAHLE EnVKV Backends" }
+  }
+}

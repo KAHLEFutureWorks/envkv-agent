@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "KAHLE EnVKV Agent",
+  "version": "0.1.0",
+  "description": "Erzeugt nachvollziehbare EnVKV-Texte aus Volkswagen-Herstellerdaten.",
+  "permissions": ["sidePanel", "storage", "clipboardWrite"],
+  "storage": { "managed_schema": "managed-storage-schema.json" },
+  "host_permissions": [
+    "https://envkv.kahle.de/*",
+    "http://127.0.0.1:8088/*"
+  ],
+  "background": { "service_worker": "service-worker.js" },
+  "side_panel": { "default_path": "sidepanel.html" },
+  "options_page": "options.html",
+  "action": { "default_title": "KAHLE EnVKV Agent öffnen" }
+}

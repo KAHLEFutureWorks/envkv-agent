@@ -1,0 +1,2 @@
+"""Anwendungsdienste und Adapter."""
+

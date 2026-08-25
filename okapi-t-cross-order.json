@@ -1,0 +1,1711 @@
+﻿{
+  "retrieved_at": "2026-08-20T14:07:55.116639+00:00",
+  "market": "DE",
+  "brand": {
+    "id": "d3f207e5-18d8-5bd2-a5fa-a1acc05629fa",
+    "name": "Volkswagen"
+  },
+  "models": [
+    {
+      "id": "31de4ff7-03c1-5d5e-952d-d41692b911b8",
+      "name": "Der T-Cross",
+      "code": "MODEL:30100_30251",
+      "types": [
+        {
+          "id": "fb73e6b2-1421-5dff-a55f-fbf213c8a120",
+          "name": "T-Cross Style 1.0 l TSI 85 kW (116 PS) 7-Gang-Doppelkupplungsgetriebe DSG",
+          "model_year": "2027",
+          "modelyear_code": "MODELYEAR:2027",
+          "code": "TYPE:D314BZ-GYOSYOS",
+          "basetype_code": "BASETYPE:D314BZ",
+          "shortener_code": "SHORTENER:E06",
+          "extensions": [
+            {
+              "code": "PACKET:YOS",
+              "description": "Vorbereitet f├╝r \"VW Connect\" und \"VW Connect Plus\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "selected_type": {
+    "id": "fb73e6b2-1421-5dff-a55f-fbf213c8a120",
+    "name": "T-Cross Style 1.0 l TSI 85 kW (116 PS) 7-Gang-Doppelkupplungsgetriebe DSG",
+    "model_year": "2027",
+    "modelyear_code": "MODELYEAR:2027",
+    "code": "TYPE:D314BZ-GYOSYOS",
+    "basetype_code": "BASETYPE:D314BZ",
+    "shortener_code": "SHORTENER:E06",
+    "extensions": [
+      {
+        "code": "PACKET:YOS",
+        "description": "Vorbereitet f├╝r \"VW Connect\" und \"VW Connect Plus\""
+      }
+    ]
+  },
+  "configuration": {
+    "brand_id": "d3f207e5-18d8-5bd2-a5fa-a1acc05629fa",
+    "model_id": "31de4ff7-03c1-5d5e-952d-d41692b911b8",
+    "options": [
+      {
+        "id": "fb4e1179-4ba6-58a1-a006-061148f51ec3"
+      },
+      {
+        "id": "522939a6-0005-5e2a-8de7-11a9dbc74d45"
+      },
+      {
+        "id": "5193d983-a01d-5c86-a0ff-f457ce01411d"
+      },
+      {
+        "id": "fb73e6b2-1421-5dff-a55f-fbf213c8a120"
+      }
+    ]
+  },
+  "configuration_check": {
+    "buildable": true,
+    "distinct": true
+  },
+  "wltp": {
+    "data": [
+      {
+        "wltp_metadata": {
+          "status": 200
+        },
+        "wltp_value": [
+          {
+            "data_version": "2",
+            "vehicle_class": "CLASS_3B",
+            "engine_type": "ICE",
+            "fuel_types": [
+              "PETROL"
+            ],
+            "coc_nr": "MCOCC28",
+            "general_data": {
+              "values": [
+                {
+                  "key": "TIRE_ROLLING_RESISTANCE_TOTAL",
+                  "value": 5.9,
+                  "unit": "0/00"
+                },
+                {
+                  "key": "TIRE_ROLLING_RESISTANCE_FRONT",
+                  "value": 5.9,
+                  "unit": "0/00"
+                },
+                {
+                  "key": "TIRE_ROLLING_RESISTANCE_REAR",
+                  "value": 5.9,
+                  "unit": "0/00"
+                },
+                {
+                  "key": "DRAG_COEFFICIENT",
+                  "value": 0.328,
+                  "unit": ""
+                },
+                {
+                  "key": "FRONT_SURFACE_A",
+                  "value": 2.35,
+                  "unit": "m2"
+                },
+                {
+                  "key": "AERODYNAMIC_DRAG",
+                  "value": 0.771,
+                  "unit": "m2"
+                },
+                {
+                  "key": "MASS_VEHICLE",
+                  "value": 1269.842,
+                  "unit": "kg"
+                },
+                {
+                  "key": "MASS_VEHICLE_FRONT",
+                  "value": 770.716,
+                  "unit": "kg"
+                },
+                {
+                  "key": "MASS_VEHICLE_REAR",
+                  "value": 499.126,
+                  "unit": "kg"
+                },
+                {
+                  "key": "MASS_ACTUAL",
+                  "value": 1344.842,
+                  "unit": "kg"
+                },
+                {
+                  "key": "TEST_MASS_VEHICLE",
+                  "value": 1422.642,
+                  "unit": "kg"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F0",
+                  "value": 110.7937486798447,
+                  "unit": "N"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F1",
+                  "value": 0.132,
+                  "unit": "N/(km/h)"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F2",
+                  "value": 0.037089158110883,
+                  "unit": "N/(km/h)2"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F0_H",
+                  "value": 144.9,
+                  "unit": "N"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F1_H",
+                  "value": 0.132,
+                  "unit": "N/(km/h)"
+                },
+                {
+                  "key": "VEHICLE_RESISTANCE_COEFFICENT_F2_H",
+                  "value": 0.04212,
+                  "unit": "N/(km/h)2"
+                },
+                {
+                  "key": "DRAG_COEFFICIENT_H",
+                  "value": 0.415,
+                  "unit": ""
+                },
+                {
+                  "key": "FRONT_SURFACE_A_H",
+                  "value": 2.12,
+                  "unit": "m2"
+                },
+                {
+                  "key": "AERODYNAMIC_DRAG_H",
+                  "value": 0.8798,
+                  "unit": "m2"
+                },
+                {
+                  "key": "TEST_MASS_VEHICLE_H",
+                  "value": 1500.0,
+                  "unit": "kg"
+                },
+                {
+                  "key": "HIGH_TYPING",
+                  "value": 0.0,
+                  "unit": ""
+                }
+              ]
+            },
+            "rl_family": {
+              "name": "RL-DQ200_7F_17_012-WVW",
+              "calc_algorithm": "RLF"
+            },
+            "ip_family": {
+              "name": "IP-MQB27SZ_A2_1068-WVW",
+              "status": "Extern"
+            },
+            "calc_algorithm": "RLF",
+            "tire": {
+              "front": {
+                "eeclass": "A",
+                "category": "C1"
+              },
+              "rear": {
+                "eeclass": "A",
+                "category": "C1"
+              }
+            },
+            "cycle_modifications": {
+              "values": []
+            },
+            "interpolations": [
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "LOW",
+                "value": 161.22744016383257,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "MEDIUM",
+                "value": 126.19206366419547,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "HIGH",
+                "value": 113.10136257324832,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "EXTRA_HIGH",
+                "value": 138.27423438837903,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "COMBINED",
+                "value": 131.0848602591093,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "LOW",
+                "value": 7.077513226473819,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "MEDIUM",
+                "value": 5.541688903040072,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "HIGH",
+                "value": 4.967838800663007,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "EXTRA_HIGH",
+                "value": 6.071358625062313,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "COMBINED",
+                "value": 5.756012368586521,
+                "unit": "l/100km"
+              }
+            ],
+            "nedc": {
+              "values": []
+            },
+            "energy_efficiency": {
+              "class_nedc": "",
+              "class_wltp": "D",
+              "iso": "DE"
+            },
+            "energy_efficiency_2": {
+              "class_nedc": "",
+              "class_wltp": "",
+              "iso": "DE"
+            },
+            "vehicle_high": [
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "LOW",
+                "value": 170.5567199444058,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "MEDIUM",
+                "value": 135.73839471855453,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "HIGH",
+                "value": 125.20377345378733,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "EXTRA_HIGH",
+                "value": 155.38566365531616,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CO2",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "COMBINED",
+                "value": 144.09999999999997,
+                "unit": "g/km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "LOW",
+                "value": 7.48739193884642,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "MEDIUM",
+                "value": 5.961273801250868,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "HIGH",
+                "value": 5.499633078526754,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "EXTRA_HIGH",
+                "value": 6.822469075747046,
+                "unit": "l/100km"
+              },
+              {
+                "value_type": "CONSUMPTION",
+                "fuel_type": "PETROL",
+                "energy_management_type": "PURE",
+                "phase": "COMBINED",
+                "value": 6.327782487838776,
+                "unit": "l/100km"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "meta": {
+      "count": 1
+    }
+  },
+  "verified_values": {
+    "engine_type": "ICE",
+    "fuel_types": [
+      "PETROL"
+    ],
+    "co2_class": "D",
+    "data_version": "2",
+    "combined_l_100km": 5.8,
+    "combined_l_100km_raw": 5.756012368586521,
+    "co2_g_km": 131.1,
+    "phase_l_100km": {
+      "low": 7.1,
+      "medium": 5.5,
+      "high": 5.0,
+      "extra_high": 6.1
+    }
+  },
+  "order": {
+    "vehicle_configuration": {
+      "brand_id": "d3f207e5-18d8-5bd2-a5fa-a1acc05629fa",
+      "brand_code": "VW",
+      "brand_description": "Volkswagen",
+      "model_id": "31de4ff7-03c1-5d5e-952d-d41692b911b8",
+      "model_code": "MODEL:30100_30251",
+      "model_description": "Der T-Cross",
+      "options": [
+        {
+          "id": "fb73e6b2-1421-5dff-a55f-fbf213c8a120",
+          "code": "TYPE:D314BZ-GYOSYOS",
+          "description": "T-Cross Style 1.0 l TSI 85 kW (116 PS) 7-Gang-Doppelkupplungsgetriebe DSG",
+          "category": "TYPE",
+          "modelyear_code": "MODELYEAR:2027",
+          "price": 33870,
+          "language_code": "de",
+          "currency": "EUR",
+          "price_type": "gross",
+          "has_price": true,
+          "tag_groups": [
+            {
+              "tags": [
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "Style",
+                  "description": "Ausstattung",
+                  "option_code": "TYPE_ATTR1:V2"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "1.0 l",
+                  "description": "Hubr.",
+                  "option_code": "TYPE_ATTR5:V0"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "Benzin",
+                  "description": "Motorart",
+                  "option_code": "TYPE_ATTR10:V0"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "TSI",
+                  "description": "Motor",
+                  "option_code": "TYPE_ATTR9:V1"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "7-Gang-DSG",
+                  "description": "Getr.",
+                  "option_code": "TYPE_ATTR2:V0"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "116",
+                  "description": "Systemleistung PS",
+                  "option_code": "TYPE_ATTR11:V1"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "85 kW",
+                  "description": "KW",
+                  "option_code": "TYPE_ATTR6:V0"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "Style",
+                  "description": "Ausstattungsversion",
+                  "option_code": "TYPE_ATTR1:V2"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "085 kW (116 PS)",
+                  "description": "Leistung",
+                  "option_code": "TYPE_ATTR7:V2"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "85",
+                  "description": "Systemleistung kW",
+                  "option_code": "TYPE_ATTR12:V1"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "1.0 TSI",
+                  "description": "Hub/Motor",
+                  "option_code": "TYPE_ATTR4:V1"
+                },
+                {
+                  "tag_type": "ADDITIONAL_TEXT",
+                  "code": "Style (#)1.0 TSI (#)85 kW (#)7-Gang-DSG (#)",
+                  "description": "Short text"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "7-Gang-Doppelkupplungsgetriebe DSG",
+                  "description": "Getriebe",
+                  "option_code": "TYPE_ATTR3:V1"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "T-Cross",
+                  "description": "Typ",
+                  "option_code": "TYPE_ATTR13:V0"
+                },
+                {
+                  "tag_type": "TYPE_ATTRIBUTE",
+                  "code": "85 kW (116 PS)",
+                  "description": "Leistung LMT ohne fuehrende 0",
+                  "option_code": "TYPE_ATTR8:V2"
+                }
+              ]
+            },
+            {
+              "tags": [
+                {
+                  "tag_type": "salesGroup",
+                  "code": "SALESGROUP:37100",
+                  "description": "Der T-Cross"
+                }
+              ]
+            }
+          ],
+          "row_number": 7,
+          "shortener_code": "SHORTENER:E06"
+        },
+        {
+          "id": "fb4e1179-4ba6-58a1-a006-061148f51ec3",
+          "code": "COLOR_EXTERIEUR:1C1C",
+          "description": "Grape Yellow",
+          "category": "COLOR_EXTERIEUR",
+          "classification": "OPTIONAL_EQUIPMENT",
+          "price": 0,
+          "language_code": "de",
+          "currency": "EUR",
+          "price_type": "gross",
+          "has_price": true,
+          "is_visible": true,
+          "tag_groups": [
+            {
+              "tags": [
+                {
+                  "tag_type": "salesFamily",
+                  "code": "050",
+                  "description": "Au├ƒenlackierungen -  Uni"
+                },
+                {
+                  "tag_type": "label",
+                  "code": "310",
+                  "description": "Die Farbkombinationen"
+                }
+              ]
+            }
+          ],
+          "is_selectable": true
+        },
+        {
+          "id": "522939a6-0005-5e2a-8de7-11a9dbc74d45",
+          "code": "COLOR_INTERIEUR:WG",
+          "description": "Cosmicblue-Titanschwarz/Schwarz/ Ceramique",
+          "category": "COLOR_INTERIEUR",
+          "classification": "OPTIONAL_EQUIPMENT",
+          "language_code": "de",
+          "has_price": false,
+          "is_visible": true,
+          "tag_groups": [
+            {
+              "tags": [
+                {
+                  "tag_type": "salesFamily",
+                  "code": "023",
+                  "description": "Serienm├ñ├ƒige Innenfarbe Sitze/Instrumententafel/Teppich"
+                },
+                {
+                  "tag_type": "label",
+                  "code": "310",
+                  "description": "Die Farbkombinationen"
+                }
+              ]
+            },
+            {
+              "tags": [
+                {
+                  "tag_type": "INTERIEUR",
+                  "code": "Sitze",
+                  "description": "Cosmicblue-Titanschwarz"
+                },
+                {
+                  "tag_type": "INTERIEUR",
+                  "code": "Instrumententafel",
+                  "description": "Schwarz"
+                },
+                {
+                  "tag_type": "INTERIEUR",
+                  "code": "Teppich",
+                  "description": " Ceramique"
+                }
+              ]
+            }
+          ],
+          "is_selectable": true
+        },
+        {
+          "id": "5193d983-a01d-5c86-a0ff-f457ce01411d",
+          "code": "MODELYEAR:2027",
+          "category": "MODELYEAR"
+        },
+        {
+          "id": "d85ad0be-b46e-5b0a-8b70-4158c5b24cfc",
+          "code": "PACKET:YOS",
+          "description": "Vorbereitet f├╝r \"VW Connect\" und \"VW Connect Plus\"",
+          "category": "PACKET",
+          "classification": "STANDARD_EQUIPMENT",
+          "is_packet": true,
+          "language_code": "de",
+          "has_price": false,
+          "is_visible": true,
+          "tag_groups": [
+            {
+              "tags": [
+                {
+                  "tag_type": "salesFamily",
+                  "code": "125",
+                  "description": "Infotainment"
+                },
+                {
+                  "tag_type": "label",
+                  "code": "901",
+                  "description": "Die Serienausstattung"
+                }
+              ]
+            }
+          ],
+          "is_selectable": true
+        }
+      ]
+    },
+    "additional_data": {
+      "technical_data": [
+        {
+          "category": "Au├ƒenabmessungen",
+          "description": "Au├ƒenabmessungen",
+          "value": ":",
+          "row_number": 0,
+          "raw_values": []
+        },
+        {
+          "category": "Au├ƒenabmessungen",
+          "description": "L├ñnge min. / L├ñnge max.",
+          "value": "4.127 mm / 4.135 mm",
+          "row_number": 1,
+          "raw_values": [
+            {
+              "name": "Length L103 (min)",
+              "number_value": 4127,
+              "id": "2.4.2.1.1",
+              "unit": "mm"
+            },
+            {
+              "name": "Length max of L102.1-L102.X or L103.1 - L103. X (max)",
+              "number_value": 4135,
+              "id": "2.4.2.1.2",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Au├ƒenabmessungen",
+          "description": "Breite min. / Breite max.",
+          "value": "1.760 mm / 1.784 mm",
+          "row_number": 2,
+          "raw_values": [
+            {
+              "name": "Width W103.1 (min)",
+              "number_value": 1760,
+              "id": "2.4.2.2.1",
+              "unit": "mm"
+            },
+            {
+              "name": "Width W103.2 (max)",
+              "number_value": 1784,
+              "id": "2.4.2.2.2",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Au├ƒenabmessungen",
+          "description": "Breite inkl. Aussenspiegel",
+          "value": "1.993 mm",
+          "row_number": 3,
+          "raw_values": [
+            {
+              "name": "Max. width incl. exterior mirrors",
+              "number_value": 1993.0,
+              "id": "0010_00005",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Au├ƒenabmessungen",
+          "description": "H├Âhe max.",
+          "value": "1.573 mm",
+          "row_number": 4,
+          "raw_values": [
+            {
+              "name": "Height (in running order) (for chassis with level control in normal driving position) max from H100.1 - H100. X (max)",
+              "number_value": 1573,
+              "id": "2.4.2.3.2",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Au├ƒenabmessungen",
+          "description": "Radstand",
+          "value": "2.551 mm",
+          "row_number": 5,
+          "raw_values": [
+            {
+              "name": "Wheelbase or wheel stand (at full load) L101/3",
+              "number_value": 2551,
+              "id": "2.1",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Au├ƒenabmessungen",
+          "description": "Spurweite vorn  min. /  vorn max.",
+          "value": "1.528 mm / 1.536 mm",
+          "row_number": 6,
+          "raw_values": [
+            {
+              "name": "Track gauge of each steered axle (min)",
+              "number_value": 1528,
+              "id": "2.3.1.1",
+              "unit": "mm"
+            },
+            {
+              "name": "Track width of each steered axle (max)",
+              "number_value": 1536,
+              "id": "2.3.1.2",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Au├ƒenabmessungen",
+          "description": "Spurweite hinten min. / hinten max.",
+          "value": "1.509 mm / 1.516 mm",
+          "row_number": 7,
+          "raw_values": [
+            {
+              "name": "Track gauge of all other axles (min)",
+              "number_value": 1509,
+              "id": "2.3.2.1",
+              "unit": "mm"
+            },
+            {
+              "name": "Track gauge of all other axes (max)",
+              "number_value": 1516,
+              "id": "2.3.2.2",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Au├ƒenabmessungen",
+          "description": "H├Âhe ge├Âffnete Heckklappe",
+          "value": "2.055 mm",
+          "row_number": 8,
+          "raw_values": [
+            {
+              "name": "Vehicle height with tailgate open ( measuring load 1 )",
+              "number_value": 2055.0,
+              "id": "0010_00004",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Au├ƒenabmessungen",
+          "description": "├£berhangwinkel Vorn / Hinten",
+          "value": "17,0 ┬░ / 20,3 ┬░",
+          "row_number": 9,
+          "raw_values": [
+            {
+              "name": "Overhang angle front - Measuring load 3",
+              "number_value": 17.0,
+              "id": "0010_00001",
+              "unit": "┬░"
+            },
+            {
+              "name": "Overhang angle rear - Measuring load 3",
+              "number_value": 20.3,
+              "id": "0010_00002",
+              "unit": "┬░"
+            }
+          ]
+        },
+        {
+          "category": "Au├ƒenabmessungen",
+          "description": "Rampenwinkel",
+          "value": "14,4 ┬░",
+          "row_number": 10,
+          "raw_values": [
+            {
+              "name": "Ramp angle - Measureing Load3",
+              "number_value": 14.4,
+              "id": "0010_00003",
+              "unit": "┬░"
+            }
+          ]
+        },
+        {
+          "category": "Innenraumabmessungen",
+          "description": "Innenraumabmessungen",
+          "value": ":",
+          "row_number": 11,
+          "raw_values": []
+        },
+        {
+          "category": "Innenraumabmessungen",
+          "description": "Kopfraum (1. Sitzreihe)",
+          "value": "1.034 mm",
+          "row_number": 12,
+          "raw_values": [
+            {
+              "name": "max. headspace 1st row of seats",
+              "number_value": 1034.0,
+              "id": "0020_00001",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Innenraumabmessungen",
+          "description": "Kopfraum (1. Sitzreihe) SAD",
+          "value": " ",
+          "row_number": 13,
+          "raw_values": []
+        },
+        {
+          "category": "Innenraumabmessungen",
+          "description": "Effektiver Kopfraum 2. Sitzreihe",
+          "value": "966 mm",
+          "row_number": 14,
+          "raw_values": [
+            {
+              "name": "Effective headspace 2nd row of seats",
+              "number_value": 966.0,
+              "id": "0020_00003",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Innenraumabmessungen",
+          "description": "Effektiver Kopfraum 2. Sitzreihe (SAD)",
+          "value": " ",
+          "row_number": 15,
+          "raw_values": []
+        },
+        {
+          "category": "Innenraumabmessungen",
+          "description": "Innenraumbreite (1. Sitzreihe) 4-t├╝rig",
+          "value": "1.460 mm",
+          "row_number": 16,
+          "raw_values": [
+            {
+              "name": "Interior width (1st row of seats) 4-door",
+              "number_value": 1460.0,
+              "id": "0020_00007",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Innenraumabmessungen",
+          "description": "Innenraumbreite (2. Sitzreihe) 4-t├╝rig",
+          "value": "1.429 mm",
+          "row_number": 17,
+          "raw_values": [
+            {
+              "name": "Interior width (2nd row of seats) 4-door",
+              "number_value": 1429.0,
+              "id": "0020_00008",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Gep├ñckraum",
+          "description": "Gep├ñckraum",
+          "value": ":",
+          "row_number": 18,
+          "raw_values": []
+        },
+        {
+          "category": "Gep├ñckraum",
+          "description": "Breite zwischen den Radk├ñsten",
+          "value": "998 mm",
+          "row_number": 19,
+          "raw_values": [
+            {
+              "name": "Smallest luggage compartment width (Width between the wheel arches)",
+              "number_value": 998.0,
+              "id": "0110_00004",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Gep├ñckraum",
+          "description": "Gep├ñckraumbodenl├ñnge 1.Sitzreihe",
+          "value": "1.465 mm",
+          "row_number": 20,
+          "raw_values": [
+            {
+              "name": "Luggage compartment floor length 1st row of seats",
+              "number_value": 1465.0,
+              "id": "0110_00001",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Gep├ñckraum",
+          "description": "Gep├ñckraumbodenl├ñnge 2.Sitzreihe",
+          "value": "748 mm",
+          "row_number": 21,
+          "raw_values": [
+            {
+              "name": "Luggage compartment floor length 2nd row of seats",
+              "number_value": 748.0,
+              "id": "0110_00002",
+              "unit": "mm"
+            }
+          ]
+        },
+        {
+          "category": "Gep├ñckraum",
+          "description": "Gr├Â├ƒtes Gep├ñckraumvolumen - hinter der 1. SR",
+          "value": "1.281 l",
+          "row_number": 22,
+          "raw_values": [
+            {
+              "name": "Largest luggage compartment volume - behind the 1st SR",
+              "number_value": 1281.0,
+              "id": "0110_00007",
+              "unit": "l"
+            }
+          ]
+        },
+        {
+          "category": "Gep├ñckraum",
+          "description": "Gep├ñckraumvolumen",
+          "value": "455 l",
+          "row_number": 23,
+          "raw_values": [
+            {
+              "name": "Communicated luggage compartment volume",
+              "number_value": 455.0,
+              "id": "0110_00009",
+              "unit": "l"
+            }
+          ]
+        },
+        {
+          "category": "Motor, Getriebe, Elektrik",
+          "description": "Motor, Getriebe, Elektrik",
+          "value": ":",
+          "row_number": 24,
+          "raw_values": []
+        },
+        {
+          "category": "Motor, Getriebe, Elektrik",
+          "description": "Motorart",
+          "value": "Benzin",
+          "row_number": 25,
+          "raw_values": [
+            {
+              "name": "Engine type",
+              "string_value": "Benzin",
+              "id": "0070_00008"
+            }
+          ]
+        },
+        {
+          "category": "Motor, Getriebe, Elektrik",
+          "description": "Motorbezeichnung",
+          "value": "TSI MV",
+          "row_number": 26,
+          "raw_values": [
+            {
+              "name": "Engine designation",
+              "string_value": "TSI MV",
+              "id": "0070_00007"
+            }
+          ]
+        },
+        {
+          "category": "Motor, Getriebe, Elektrik",
+          "description": "Emissionsklasse",
+          "value": "EURO 6 EB",
+          "row_number": 27,
+          "raw_values": [
+            {
+              "name": "Emission standard (Euro stage)",
+              "string_value": "EURO 6 EB",
+              "id": "3.3.1.0.1"
+            }
+          ]
+        },
+        {
+          "category": "Motor, Getriebe, Elektrik",
+          "description": "Hubraum",
+          "value": "999 cm┬│",
+          "row_number": 28,
+          "raw_values": [
+            {
+              "name": "Displacement volume",
+              "number_value": 999,
+              "id": "3.2.1.3.99",
+              "unit": "cm┬│"
+            }
+          ]
+        },
+        {
+          "category": "Motor, Getriebe, Elektrik",
+          "description": "Max. Leistung",
+          "value": "85 kW",
+          "row_number": 29,
+          "raw_values": [
+            {
+              "name": "Rated power:.... kW (as specified by the manufacturer)",
+              "number_value": 85.0,
+              "id": "3.2.1.8",
+              "unit": "kW"
+            }
+          ]
+        },
+        {
+          "category": "Motor, Getriebe, Elektrik",
+          "description": "Max. Leistung (PS)",
+          "value": "116 PS",
+          "row_number": 30,
+          "raw_values": [
+            {
+              "name": "Rated power:.... kW (as specified by the manufacturer)",
+              "number_value": 115.5677,
+              "id": "3.2.1.8",
+              "unit": "PS"
+            }
+          ]
+        },
+        {
+          "category": "Motor, Getriebe, Elektrik",
+          "description": "Max. Drehmoment",
+          "value": "200 Nm / 2000 - 3500 1/min",
+          "row_number": 31,
+          "raw_values": [
+            {
+              "name": "Nominal torque: .... Nm at .... 1/min (according to the manufacturer's specifications)",
+              "string_value": "200 Nm / 2000 - 3500 1/min",
+              "id": "3.2.1.10"
+            }
+          ]
+        },
+        {
+          "category": "Motor, Getriebe, Elektrik",
+          "description": "Getriebe",
+          "value": "7-Gang-Doppelkupplungsgetriebe DSG",
+          "row_number": 32,
+          "raw_values": [
+            {
+              "name": "Getriebe",
+              "string_value": "7-Gang-Doppelkupplungsgetriebe DSG",
+              "id": "TE3.GETRIEBE"
+            }
+          ]
+        },
+        {
+          "category": "Motor, Getriebe, Elektrik",
+          "description": "Getriebebezeichnung",
+          "value": "DQ200-7F",
+          "row_number": 33,
+          "raw_values": [
+            {
+              "name": "Transmission",
+              "string_value": "DQ200-7F",
+              "id": "0070_00006"
+            }
+          ]
+        },
+        {
+          "category": "weitere Emissionswerte",
+          "description": "weitere Emissionswerte",
+          "value": ":",
+          "row_number": 34,
+          "raw_values": []
+        },
+        {
+          "category": "weitere Emissionswerte",
+          "description": "Stickoxiden (NOx) Kraftstoff I",
+          "value": "22,1 mg/km",
+          "row_number": 35,
+          "raw_values": [
+            {
+              "name": "Nitrogen oxides (NOx) (fuel I)",
+              "number_value": 22.1,
+              "id": "3.4.1.1",
+              "unit": "mg/km"
+            }
+          ]
+        },
+        {
+          "category": "weitere Emissionswerte",
+          "description": "Partikelemission Kraftstoff I",
+          "value": "0,04 mg/km",
+          "row_number": 36,
+          "raw_values": [
+            {
+              "name": "Particulate matter (PM) (fuel I)",
+              "number_value": 0.04,
+              "id": "3.4.6.1",
+              "unit": "mg/km"
+            }
+          ]
+        },
+        {
+          "category": "weitere Emissionswerte",
+          "description": "Nichtmethan-Kohlenwasserstoffe (NMHC) I",
+          "value": "11,3 mg/km",
+          "row_number": 37,
+          "raw_values": [
+            {
+              "name": "Non-methane hydrocarbons (NMHC) (fuel I)",
+              "number_value": 11.3,
+              "id": "3.4.3.1",
+              "unit": "mg/km"
+            }
+          ]
+        },
+        {
+          "category": "Gewichte",
+          "description": "Gewichte",
+          "value": ":",
+          "row_number": 38,
+          "raw_values": []
+        },
+        {
+          "category": "Gewichte",
+          "description": "Leergewicht min.",
+          "value": "1.296 kg",
+          "row_number": 39,
+          "raw_values": [
+            {
+              "name": "Mass of the vehicle with bodywork in running order with driver (min)",
+              "number_value": 1296,
+              "id": "2.6.1",
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "category": "Gewichte",
+          "description": "Zul. Gesamtgewicht",
+          "value": "1.770 kg",
+          "row_number": 40,
+          "raw_values": [
+            {
+              "name": "Technically permissible total mass when loaded",
+              "number_value": 1770,
+              "id": "2.8",
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "category": "Gewichte",
+          "description": "Zul. Achslast vorn / hinten",
+          "value": "920 kg / 900 kg",
+          "row_number": 41,
+          "raw_values": [
+            {
+              "name": "Technisch zul├ñssige maximale Last je Achse (Achse 1) (Gem. 2.9 Technisch zul├ñssige maximale Last je Achse )",
+              "number_value": 920,
+              "id": "2.9.1",
+              "unit": "kg"
+            },
+            {
+              "name": "Technisch zul├ñssige maximale Last je Achse (Achse 2) (Gem. 2.9 Technisch zul├ñssige maximale Last je Achse )",
+              "number_value": 900,
+              "id": "2.9.2",
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "category": "Gewichte",
+          "description": "Zul. Anh├ñngelast gebremst bei 12 %",
+          "value": "1.100 kg",
+          "row_number": 42,
+          "raw_values": [
+            {
+              "name": "Central axle trailer (12%)",
+              "number_value": 1100,
+              "id": "2.11.3",
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "category": "Gewichte",
+          "description": "Zul. Anh├ñngelast gebremst bei 8 %",
+          "value": "1.200 kg",
+          "row_number": 43,
+          "raw_values": [
+            {
+              "name": "Central axle trailer (8%)",
+              "number_value": 1200,
+              "id": "2.11.3.99",
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "category": "Gewichte",
+          "description": "Zul. Anh├ñngelast ungebremst",
+          "value": "640 kg",
+          "row_number": 44,
+          "raw_values": [
+            {
+              "name": "Maximum permissible mass of an unbraked trailer",
+              "number_value": 640,
+              "id": "2.11.6",
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "category": "Gewichte",
+          "description": "St├╝tzlast",
+          "value": "75 kg",
+          "row_number": 45,
+          "raw_values": [
+            {
+              "name": "Load on support (Heading No 2.12)",
+              "number_value": 75,
+              "id": "2.12.1",
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "category": "Gewichte",
+          "description": "Dachlast",
+          "value": "75 kg",
+          "row_number": 46,
+          "raw_values": [
+            {
+              "name": "permissible roof load",
+              "number_value": 75.0,
+              "id": "2.10.7",
+              "unit": "kg"
+            }
+          ]
+        },
+        {
+          "category": "Fahrleistungen",
+          "description": "Fahrleistungen",
+          "value": ":",
+          "row_number": 47,
+          "raw_values": []
+        },
+        {
+          "category": "Fahrleistungen",
+          "description": "H├Âchstgeschwindigkeit",
+          "value": "192 km/h",
+          "row_number": 48,
+          "raw_values": [
+            {
+              "name": "Maximum speed of the vehicle (km/h)",
+              "number_value": 192,
+              "id": "4.7",
+              "unit": "km/h"
+            }
+          ]
+        },
+        {
+          "category": "Fahrleistungen",
+          "description": "Beschleunigung 0-100 km/h",
+          "value": "10,3 s",
+          "row_number": 49,
+          "raw_values": [
+            {
+              "name": "Acceleration 0-100km/h",
+              "number_value": 10.3,
+              "id": "0090_00001",
+              "unit": "s"
+            }
+          ]
+        },
+        {
+          "category": "Weitere Daten",
+          "description": "Weitere Daten",
+          "value": ":",
+          "row_number": 50,
+          "raw_values": []
+        },
+        {
+          "category": "Weitere Daten",
+          "description": "Wendekreis ca.",
+          "value": "10,7 m",
+          "row_number": 51,
+          "raw_values": [
+            {
+              "name": "Minimum turning circle approx. ",
+              "number_value": 10.7,
+              "id": "0900_00001",
+              "unit": "m"
+            }
+          ]
+        },
+        {
+          "category": "Weitere Daten",
+          "description": "Fahrger├ñusch",
+          "value": "67 dB(A)",
+          "row_number": 52,
+          "raw_values": [
+            {
+              "name": "driving noise",
+              "number_value": 67.0,
+              "id": "1.2",
+              "unit": "dB(A)"
+            }
+          ]
+        },
+        {
+          "category": "Weitere Daten",
+          "description": "Kraftstoffart",
+          "value": "Benzin",
+          "row_number": 53,
+          "raw_values": [
+            {
+              "name": "Fuel",
+              "string_value": "Benzin",
+              "id": "3.3"
+            }
+          ]
+        },
+        {
+          "category": "Weitere Daten",
+          "description": "Kraftstoffbeh├ñlter Benzin / Diesel",
+          "value": "40 l",
+          "row_number": 54,
+          "raw_values": [
+            {
+              "name": "Fuel tank petrol/diesel (brochure volume)",
+              "number_value": 40.0,
+              "id": "0030_00001",
+              "unit": "l"
+            }
+          ]
+        },
+        {
+          "category": "Weitere Daten",
+          "description": "Hersteller Schl├╝sselnummer",
+          "value": "0603",
+          "row_number": 55,
+          "raw_values": [
+            {
+              "name": "Manufacturer Key Number",
+              "string_value": "0603",
+              "id": "A.1"
+            }
+          ]
+        }
+      ],
+      "technical_attributes": [
+        {
+          "category": "2.4.2.1.1",
+          "description": "Length L103 (min)",
+          "number_value": 4127,
+          "unit": "mm"
+        },
+        {
+          "category": "2.4.2.1.2",
+          "description": "Length max of L102.1-L102.X or L103.1 - L103. X (max)",
+          "number_value": 4135,
+          "unit": "mm"
+        },
+        {
+          "category": "2.4.2.2.1",
+          "description": "Width W103.1 (min)",
+          "number_value": 1760,
+          "unit": "mm"
+        },
+        {
+          "category": "2.4.2.2.2",
+          "description": "Width W103.2 (max)",
+          "number_value": 1784,
+          "unit": "mm"
+        },
+        {
+          "category": "0010_00005",
+          "description": "Max. width incl. exterior mirrors",
+          "number_value": 1993.0,
+          "unit": "mm"
+        },
+        {
+          "category": "2.4.2.3.2",
+          "description": "Height (in running order) (for chassis with level control in normal driving position) max from H100.1 - H100. X (max)",
+          "number_value": 1573,
+          "unit": "mm"
+        },
+        {
+          "category": "2.1",
+          "description": "Wheelbase or wheel stand (at full load) L101/3",
+          "number_value": 2551,
+          "unit": "mm"
+        },
+        {
+          "category": "2.3.1.1",
+          "description": "Track gauge of each steered axle (min)",
+          "number_value": 1528,
+          "unit": "mm"
+        },
+        {
+          "category": "2.3.1.2",
+          "description": "Track width of each steered axle (max)",
+          "number_value": 1536,
+          "unit": "mm"
+        },
+        {
+          "category": "2.3.2.1",
+          "description": "Track gauge of all other axles (min)",
+          "number_value": 1509,
+          "unit": "mm"
+        },
+        {
+          "category": "2.3.2.2",
+          "description": "Track gauge of all other axes (max)",
+          "number_value": 1516,
+          "unit": "mm"
+        },
+        {
+          "category": "0010_00004",
+          "description": "Vehicle height with tailgate open ( measuring load 1 )",
+          "number_value": 2055.0,
+          "unit": "mm"
+        },
+        {
+          "category": "0010_00001",
+          "description": "Overhang angle front - Measuring load 3",
+          "number_value": 17.0,
+          "unit": "┬░"
+        },
+        {
+          "category": "0010_00002",
+          "description": "Overhang angle rear - Measuring load 3",
+          "number_value": 20.3,
+          "unit": "┬░"
+        },
+        {
+          "category": "0010_00003",
+          "description": "Ramp angle - Measureing Load3",
+          "number_value": 14.4,
+          "unit": "┬░"
+        },
+        {
+          "category": "0020_00001",
+          "description": "max. headspace 1st row of seats",
+          "number_value": 1034.0,
+          "unit": "mm"
+        },
+        {
+          "category": "0020_00003",
+          "description": "Effective headspace 2nd row of seats",
+          "number_value": 966.0,
+          "unit": "mm"
+        },
+        {
+          "category": "0020_00007",
+          "description": "Interior width (1st row of seats) 4-door",
+          "number_value": 1460.0,
+          "unit": "mm"
+        },
+        {
+          "category": "0020_00008",
+          "description": "Interior width (2nd row of seats) 4-door",
+          "number_value": 1429.0,
+          "unit": "mm"
+        },
+        {
+          "category": "0110_00004",
+          "description": "Smallest luggage compartment width (Width between the wheel arches)",
+          "number_value": 998.0,
+          "unit": "mm"
+        },
+        {
+          "category": "0110_00001",
+          "description": "Luggage compartment floor length 1st row of seats",
+          "number_value": 1465.0,
+          "unit": "mm"
+        },
+        {
+          "category": "0110_00002",
+          "description": "Luggage compartment floor length 2nd row of seats",
+          "number_value": 748.0,
+          "unit": "mm"
+        },
+        {
+          "category": "0110_00007",
+          "description": "Largest luggage compartment volume - behind the 1st SR",
+          "number_value": 1281.0,
+          "unit": "l"
+        },
+        {
+          "category": "0110_00009",
+          "description": "Communicated luggage compartment volume",
+          "number_value": 455.0,
+          "unit": "l"
+        },
+        {
+          "category": "0070_00008",
+          "description": "Engine type",
+          "string_value": "Benzin"
+        },
+        {
+          "category": "0070_00007",
+          "description": "Engine designation",
+          "string_value": "TSI MV"
+        },
+        {
+          "category": "3.3.1.0.1",
+          "description": "Emission standard (Euro stage)",
+          "string_value": "EURO 6 EB"
+        },
+        {
+          "category": "3.2.1.3.99",
+          "description": "Displacement volume",
+          "number_value": 999,
+          "unit": "cm┬│"
+        },
+        {
+          "category": "3.2.1.8",
+          "description": "Rated power:.... kW (as specified by the manufacturer)",
+          "number_value": 85.0,
+          "unit": "kW"
+        },
+        {
+          "category": "3.2.1.8",
+          "description": "Rated power:.... kW (as specified by the manufacturer)",
+          "number_value": 115.5677,
+          "unit": "PS"
+        },
+        {
+          "category": "3.2.1.10",
+          "description": "Nominal torque: .... Nm at .... 1/min (according to the manufacturer's specifications)",
+          "string_value": "200 Nm / 2000 - 3500 1/min"
+        },
+        {
+          "category": "0070_00006",
+          "description": "Transmission",
+          "string_value": "DQ200-7F"
+        },
+        {
+          "category": "3.4.1.1",
+          "description": "Nitrogen oxides (NOx) (fuel I)",
+          "number_value": 22.1,
+          "unit": "mg/km"
+        },
+        {
+          "category": "3.4.6.1",
+          "description": "Particulate matter (PM) (fuel I)",
+          "number_value": 0.04,
+          "unit": "mg/km"
+        },
+        {
+          "category": "3.4.3.1",
+          "description": "Non-methane hydrocarbons (NMHC) (fuel I)",
+          "number_value": 11.3,
+          "unit": "mg/km"
+        },
+        {
+          "category": "2.6.1",
+          "description": "Mass of the vehicle with bodywork in running order with driver (min)",
+          "number_value": 1296,
+          "unit": "kg"
+        },
+        {
+          "category": "2.8",
+          "description": "Technically permissible total mass when loaded",
+          "number_value": 1770,
+          "unit": "kg"
+        },
+        {
+          "category": "2.9.1",
+          "description": "Technisch zul├ñssige maximale Last je Achse (Achse 1) (Gem. 2.9 Technisch zul├ñssige maximale Last je Achse )",
+          "number_value": 920,
+          "unit": "kg"
+        },
+        {
+          "category": "2.9.2",
+          "description": "Technisch zul├ñssige maximale Last je Achse (Achse 2) (Gem. 2.9 Technisch zul├ñssige maximale Last je Achse )",
+          "number_value": 900,
+          "unit": "kg"
+        },
+        {
+          "category": "2.11.3",
+          "description": "Central axle trailer (12%)",
+          "number_value": 1100,
+          "unit": "kg"
+        },
+        {
+          "category": "2.11.3.99",
+          "description": "Central axle trailer (8%)",
+          "number_value": 1200,
+          "unit": "kg"
+        },
+        {
+          "category": "2.11.6",
+          "description": "Maximum permissible mass of an unbraked trailer",
+          "number_value": 640,
+          "unit": "kg"
+        },
+        {
+          "category": "2.12.1",
+          "description": "Load on support (Heading No 2.12)",
+          "number_value": 75,
+          "unit": "kg"
+        },
+        {
+          "category": "2.10.7",
+          "description": "permissible roof load",
+          "number_value": 75.0,
+          "unit": "kg"
+        },
+        {
+          "category": "4.7",
+          "description": "Maximum speed of the vehicle (km/h)",
+          "number_value": 192,
+          "unit": "km/h"
+        },
+        {
+          "category": "0090_00001",
+          "description": "Acceleration 0-100km/h",
+          "number_value": 10.3,
+          "unit": "s"
+        },
+        {
+          "category": "0900_00001",
+          "description": "Minimum turning circle approx. ",
+          "number_value": 10.7,
+          "unit": "m"
+        },
+        {
+          "category": "1.2",
+          "description": "driving noise",
+          "number_value": 67.0,
+          "unit": "dB(A)"
+        },
+        {
+          "category": "3.3",
+          "description": "Fuel",
+          "string_value": "Benzin"
+        },
+        {
+          "category": "0030_00001",
+          "description": "Fuel tank petrol/diesel (brochure volume)",
+          "number_value": 40.0,
+          "unit": "l"
+        },
+        {
+          "category": "A.1",
+          "description": "Manufacturer Key Number",
+          "string_value": "0603"
+        }
+      ]
+    },
+    "meta": {
+      "warnings": "1: Missing values for the following attributeIds: 0020_00002, 0020_00004"
+    }
+  }
+}

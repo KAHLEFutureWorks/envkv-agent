@@ -1,0 +1,8 @@
+# Im Repository gelten einheitlich LF. Ohne diese Vorgabe erhielten Dockerfile
+# und Shell-Aufrufe unter Windows CRLF und liefen im Linux-Container nicht.
+* text=auto eol=lf
+
+# Binärdateien niemals umschreiben.
+*.png binary
+*.jpg binary
+*.pdf binary
