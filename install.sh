@@ -104,15 +104,18 @@ ok ".env vorhanden, Rechte auf 600 gesetzt"
 # Eine unter Windows bearbeitete .env enthält CRLF. Docker würde das Wagenrück-
 # laufzeichen als Teil des Wertes übernehmen; die Zugangsdaten wären damit still
 # falsch und der Fehler später schwer zu finden.
-if grep -q $'' "$ENV_FILE"; then
-  sed -i 's/$//' "$ENV_FILE"
+if grep -q $'
+' "$ENV_FILE"; then
+  sed -i 's/
+$//' "$ENV_FILE"
   warn "Windows-Zeilenenden in .env gefunden und entfernt"
 fi
 
 # Pflichtwerte prüfen, ohne sie auszugeben.
 missing=""
 for key in VW_CLIENT_ID VW_CLIENT_SECRET EXTENSION_API_KEY; do
-  value="$(grep -E "^${key}=" "$ENV_FILE" | head -1 | cut -d= -f2- | tr -d '' || true)"
+  value="$(grep -E "^${key}=" "$ENV_FILE" | head -1 | cut -d= -f2- | tr -d '
+' || true)"
   [ -n "$value" ] || missing="$missing $key"
 done
 [ -z "$missing" ] || die "In $ENV_FILE fehlen Werte für:$missing

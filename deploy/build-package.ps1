@@ -47,6 +47,14 @@ Write-Host "==> Paket erzeugen" -ForegroundColor Cyan
 git archive --format=tar.gz --prefix="$name/" -o $archive HEAD
 if ($LASTEXITCODE -ne 0) { throw "git archive ist fehlgeschlagen." }
 
+# Ein install.sh mit Windows-Zeilenenden laeuft auf dem Server nicht. Das faellt
+# sonst erst beim Kunden auf, deshalb wird es hier geprueft.
+$installBlob = git show "HEAD:install.sh"
+if ($installBlob -join "`n" -match "`r") {
+    throw "install.sh enthaelt Wagenruecklaufzeichen. Bitte auf LF normalisieren und neu committen."
+}
+Write-Host "    install.sh: reine LF-Zeilenenden"
+
 $hash = (Get-FileHash -Algorithm SHA256 $archive).Hash.ToLower()
 $size = [math]::Round((Get-Item $archive).Length / 1MB, 2)
 
