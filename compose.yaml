@@ -35,6 +35,7 @@ services:
       - envkv-data:/app/data
     networks:
       - envkv
+      - caddy
     ports:
       # Nur an die Loopback-Adresse gebunden. Der öffentliche Zugriff läuft
       # ausschließlich über den gemeinsamen Caddy per HTTPS.
@@ -64,6 +65,12 @@ services:
 networks:
   envkv:
     name: envkv
+  # Netz des bestehenden Caddy. Nur darueber erreicht der Reverse Proxy diesen
+  # Dienst; die Portbindung bleibt weiterhin auf 127.0.0.1 beschraenkt. Das Netz
+  # wird von einem anderen Stack verwaltet und hier nur mitbenutzt.
+  caddy:
+    name: ${CADDY_NETWORK:-stack_appnet}
+    external: true
 
 volumes:
   envkv-data:

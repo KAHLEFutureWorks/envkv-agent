@@ -139,13 +139,32 @@ sudo grep '^EXTENSION_API_KEY=' /opt/envkv/.env
 
 ## 5. Caddy-Route ergänzen
 
-In der bestehenden Caddyfile:
+Caddy läuft bei KAHLE selbst als Container im Netz `stack_appnet` und spricht
+die übrigen Dienste über ihren Containernamen an. `127.0.0.1` zeigte aus dem
+Caddy-Container heraus auf Caddy selbst und liefe ins Leere. Der EnVKV-Dienst
+hängt deshalb zusätzlich in diesem Netz; die Portbindung bleibt davon unberührt
+auf `127.0.0.1` beschränkt.
+
+Voraussetzung: Der DNS-Eintrag muss stehen, sonst kann Caddy kein Zertifikat
+ausstellen lassen.
+
+```bash
+getent hosts envkv.kahle.de
+```
+
+Dann folgenden Block an die Caddyfile anhängen:
 
 ```
 envkv.kahle.de {
 	encode zstd gzip
-	reverse_proxy 127.0.0.1:8088
+	reverse_proxy envkv-api:8088
 }
+```
+
+Vor dem Neuladen prüfen, ob Caddy den Dienst überhaupt erreicht:
+
+```bash
+sudo docker run --rm --network stack_appnet curlimages/curl -s http://envkv-api:8088/api/v1/health
 ```
 
 Caddy neu laden, dann von außen prüfen:
