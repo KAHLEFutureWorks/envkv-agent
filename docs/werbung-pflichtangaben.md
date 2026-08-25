@@ -52,6 +52,61 @@ Deshalb erzeugt der EnVKV-Agent für Werbung und Social Media den kurzen
 Pflichtblock, und erst für ein konkretes Angebot zusätzlich den vollständigen
 Hinweis mit allen Fahrphasen.
 
+## Und die elektrische Reichweite? Und die Energiekosten?
+
+Beides ist in der Werbung **nicht** vorgeschrieben. Anlage 4 Teil I zählt die
+Pflichtangaben abschließend auf, und weder die elektrische Reichweite noch die
+Energiekosten, die CO₂-Kosten oder die Kraftfahrzeugsteuer stehen darin. Alle
+diese Angaben gehören in den vollständigen Hinweis nach Anlage 1.
+
+Das gilt auch für Elektrofahrzeuge: Die Reichweite ist Teil der allgemeinen
+Kennzeichnung nach § 1 und des Anlage-1-Hinweises, nicht des kurzen
+Werbepflichtblocks.
+
+## Die entscheidende Vorfrage: Onlinewerbung oder Fernabsatz?
+
+Hier liegt der eigentliche Knackpunkt für unsere Fahrzeugseiten.
+
+**Onlinewerbung** ist die normale Händlerwebsite. Dafür gelten § 5 und Anlage 4
+Teil I und II — ohne Ziffer 3. Es genügen die drei Pflichtangaben.
+
+**Fernabsatz** liegt vor, wenn für Vertragsverhandlung *und* Vertragsschluss
+ausschließlich Fernkommunikationsmittel verwendet werden (§ 312c BGB). Dann
+greift Anlage 4 Teil II Ziffer 3, und der vollständige Hinweis nach Anlage 1 wird
+Pflicht — inklusive Reichweite, Fahrphasen, Energiekosten, CO₂-Kosten und
+Kraftfahrzeugsteuer.
+
+Der Fragen-und-Antworten-Katalog des Kfz-Gewerbes ordnet das so ein:
+
+> „Bei einer schlichten Händlerwebsite handelt es sich um Onlinewerbung.
+> Dementsprechend sind […] die Anforderungen an Werbung, konkret elektronische
+> Werbung, zu erfüllen (§ 5 Pkw-EnVKV, Anlage 4 Teil I und II **exklusive
+> Ziffer 3**). D. h. die besonderen Anforderungen der Anlage 4 Teil II
+> ‚Elektronische Werbung' Ziffer 3. für das Anbieten von neuen Pkw im Internet
+> zum Zwecke des Fernabsatzes finden keine Anwendung."
+
+Und zur Abgrenzung:
+
+> „Grundsätzlich dürfte von der Möglichkeit eines Fernabsatzes nur dann
+> auszugehen sein, wenn diese auch entsprechend beworben oder gekennzeichnet
+> wird. **Entscheidend ist die tatsächliche Handhabung.**"
+
+Als Beispiel für einen ausschließenden Hinweis nennt der Katalog:
+
+> „Dieses Angebot ist vom Fernabsatzhandel ausgeschlossen. Für einen
+> Vertragsabschluss bedarf es einer persönlichen Vertragsunterzeichnung vor Ort."
+
+Praktisch heißt das: Solange auf unseren Seiten kein Vertrag rein digital
+zustande kommt, sind es Werbeseiten, und die drei Pflichtangaben genügen. Sobald
+ein durchgehender Online-Abschluss möglich ist, brauchen dieselben Seiten den
+vollständigen Anlage-1-Hinweis.
+
+## Wenn wir mehr angeben als nötig
+
+Reichweite und Energiekosten auf einer reinen Werbeseite sind nicht verboten.
+Sie sind aber freiwillig — und damit gilt für sie dasselbe wie für jede
+Zusatzangabe:
+
 ## Warum wir die Einzelwerte nicht freiwillig ergänzen
 
 Zusätzliche Angaben sind nicht generell verboten, aber sie sind ein Risiko.
@@ -72,6 +127,13 @@ beeinträchtigen, die die Verordnung schützen will.
 Dazu kommt der praktische Punkt: Jede zusätzliche Zahl ist eine zusätzliche
 Fehlerquelle. Pflichtangaben müssen exakt aus der Übereinstimmungsbescheinigung
 stammen. Was nicht gefordert ist, kann auch nicht falsch sein.
+
+Besonders gilt das für die Energie- und CO₂-Kosten: Die zugrunde liegenden
+amtlichen Preise werden **jedes Jahr zum 30. Juni neu veröffentlicht** und sind
+spätestens ab dem 1. Oktober anzuwenden. Eine Fahrzeugseite mit fest
+eingetragenen Kostenwerten wird dadurch jedes Jahr von selbst falsch, wenn
+niemand sie nachzieht. Wo diese Angaben freiwillig stehen, brauchen sie einen
+festen Pflegetermin — oder sie sollten entfallen.
 
 ## Warum beim Benziner „Energieverbrauch" steht und nicht „Kraftstoffverbrauch"
 
