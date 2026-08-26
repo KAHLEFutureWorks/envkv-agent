@@ -71,6 +71,13 @@ for file in Dockerfile compose.yaml .dockerignore .env.example README.md install
   fi
 done
 
+# Die signierten Pakete der Erweiterung liegen ausserhalb der ersetzten Baeume,
+# damit eine neue Fassung der Anwendung sie nicht mitentfernt.
+mkdir -p "$TARGET/releases"
+if compgen -G "$PACKAGE_DIR/releases/*.crx" > /dev/null 2>&1; then
+  cp -a "$PACKAGE_DIR"/releases/*.crx "$TARGET/releases/"
+fi
+
 ok "Dateien abgelegt"
 
 # ------------------------------------------------------------------ .env
@@ -175,6 +182,18 @@ if [ "$health" != '{"status":"ok"}' ]; then
 fi
 ok "Statusabfrage: $health"
 
+crx_count="$(find "$TARGET/releases" -maxdepth 1 -name '*.crx' 2>/dev/null | wc -l)"
+if [ "$crx_count" -gt 0 ]; then
+  ext_code="$(curl -s -o /dev/null -w '%{http_code}' http://127.0.0.1:8088/ext/updates.xml)"
+  if [ "$ext_code" = "200" ]; then
+    ok "Aktualisierungshinweis der Erweiterung erreichbar ($crx_count Paket(e))"
+  else
+    warn "Aktualisierungshinweis antwortet mit $ext_code - ist ENVKV_EXTENSION_ID gesetzt?"
+  fi
+else
+  warn "Noch kein signiertes Paket in $TARGET/releases abgelegt"
+fi
+
 code="$(curl -s -o /dev/null -w '%{http_code}' -X POST \
   http://127.0.0.1:8088/api/v1/vehicle/compliance \
   -H 'Content-Type: application/json' --data '{"vehicle_name":"ID.5"}')"
@@ -205,6 +224,12 @@ cat <<ABSCHLUSS
     Zugriffsschlüssel für die Edge-Erweiterung auslesen:
 
         sudo grep '^EXTENSION_API_KEY=' $ENV_FILE
+
+    Signierte Pakete der Erweiterung gehören nach:
+
+        $TARGET/releases/
+
+    Der Ablauf steht in docs/edge-verteilung.md.
 
     Nützliche Befehle:
 

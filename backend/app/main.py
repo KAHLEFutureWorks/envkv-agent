@@ -7,7 +7,7 @@ import logging
 from typing import Annotated
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Request, Response, status
-from fastapi.responses import HTMLResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from pydantic import BaseModel, Field
 
 from backend.app.config import Settings
@@ -26,6 +26,13 @@ from backend.app.storage import SQLiteStore
 from backend.app.services.data_sheet import (
     render_data_sheet_html,
     render_data_sheet_snippet,
+)
+from backend.app.services.extension_release import (
+    CRX_MEDIA_TYPE,
+    EXTENSION_ID,
+    latest_release,
+    render_updates_xml,
+    resolve_package,
 )
 
 
@@ -213,6 +220,41 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             render_data_sheet_snippet(data_sheet_for(payload, request)),
             media_type="text/plain; charset=utf-8",
         )
+
+    def release_directory(request: Request):
+        """Das Verzeichnis der Pakete, sofern die Selbstauslieferung eingerichtet ist."""
+        config = request.app.state.settings
+        if config.extension_release_dir is None or not EXTENSION_ID.match(config.extension_id):
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Fuer diesen Dienst ist keine Selbstauslieferung eingerichtet.",
+            )
+        return config
+
+    # Die beiden folgenden Adressen sind bewusst ohne Zugangsschluessel
+    # erreichbar: Edge kennt beim Abholen der Erweiterung keinen Schluessel.
+    # Ausgeliefert wird ausschliesslich das signierte Paket, das selbst keine
+    # Zugangsdaten enthaelt.
+    @app.get("/ext/updates.xml", response_class=Response)
+    def extension_updates(request: Request) -> Response:
+        config = release_directory(request)
+        release = latest_release(config.extension_release_dir)
+        if release is None:
+            raise HTTPException(status_code=404, detail="Es liegt kein Paket bereit.")
+        return Response(
+            render_updates_xml(config.extension_id, config.extension_base_url, release),
+            media_type="application/xml; charset=utf-8",
+            headers={"Cache-Control": "no-cache"},
+        )
+
+    @app.get("/ext/{filename}", response_class=FileResponse)
+    def extension_package(filename: str, request: Request) -> FileResponse:
+        config = release_directory(request)
+        release = resolve_package(config.extension_release_dir, filename)
+        if release is None:
+            raise HTTPException(status_code=404, detail="Dieses Paket gibt es nicht.")
+        # Ohne genau diesen Inhaltstyp verweigert Edge die Installation.
+        return FileResponse(release.path, media_type=CRX_MEDIA_TYPE, filename=release.filename)
 
     return app
 

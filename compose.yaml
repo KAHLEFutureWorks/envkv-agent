@@ -31,8 +31,16 @@ services:
       CO2_PRICE_MEDIUM_EUR_T: ${CO2_PRICE_MEDIUM_EUR_T:-142.5}
       CO2_PRICE_HIGH_EUR_T: ${CO2_PRICE_HIGH_EUR_T:-220}
       CO2_COST_PERIOD_YEARS: ${CO2_COST_PERIOD_YEARS:-10}
+      # Selbstauslieferung des Edge-Add-ins. Ohne Kennung bleiben die
+      # Auslieferungsadressen abgeschaltet und antworten mit 404.
+      ENVKV_EXTENSION_DIR: /srv/releases
+      ENVKV_EXTENSION_ID: ${ENVKV_EXTENSION_ID:-}
+      ENVKV_BASE_URL: ${ENVKV_BASE_URL:-https://envkv.kahle.de}
     volumes:
       - envkv-data:/app/data
+      # Nur lesend eingehängt: Der Dienst liefert die Pakete aus, legt aber
+      # selbst keine an.
+      - ./releases:/srv/releases:ro
     networks:
       - envkv
       - caddy

@@ -17,3 +17,9 @@ extension/dist/
 
 # Erzeugte Auslieferungspakete
 deploy/dist/
+
+# Signaturschlüssel und signierte Pakete der Erweiterung. Der Schlüssel gehört
+# in den Passwortmanager, das Paket auf den Server - beides niemals hierher.
+*.pem
+*.crx
+/releases/

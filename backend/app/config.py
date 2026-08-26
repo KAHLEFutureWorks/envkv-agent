@@ -27,6 +27,11 @@ class Settings:
     co2_price_medium_eur_t: str = "142.5"
     co2_price_high_eur_t: str = "220"
     co2_cost_period_years: int = 10
+    # Selbstauslieferung des Edge-Add-ins. Ohne Verzeichnis und Kennung bleiben
+    # die Auslieferungsadressen abgeschaltet.
+    extension_release_dir: Path | None = None
+    extension_id: str = ""
+    extension_base_url: str = "https://envkv.kahle.de"
 
     @classmethod
     def from_env(cls) -> "Settings":
@@ -51,4 +56,11 @@ class Settings:
             co2_price_medium_eur_t=os.getenv("CO2_PRICE_MEDIUM_EUR_T", "142.5"),
             co2_price_high_eur_t=os.getenv("CO2_PRICE_HIGH_EUR_T", "220"),
             co2_cost_period_years=int(os.getenv("CO2_COST_PERIOD_YEARS", "10")),
+            extension_release_dir=(
+                Path(os.environ["ENVKV_EXTENSION_DIR"])
+                if os.getenv("ENVKV_EXTENSION_DIR")
+                else None
+            ),
+            extension_id=os.getenv("ENVKV_EXTENSION_ID", ""),
+            extension_base_url=os.getenv("ENVKV_BASE_URL", "https://envkv.kahle.de"),
         )

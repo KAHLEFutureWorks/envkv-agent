@@ -249,6 +249,9 @@ equirements-dev.txt
 Warum in der Werbung nur der kombinierte Wert steht und keine Fahrphasen, und
 warum dort auch beim Benziner „Energieverbrauch" steht: `docs/werbung-pflichtangaben.md`.
 
+Wie die Erweiterung ohne manuelle Einrichtung über den eigenen Server an die
+Mitarbeitenden kommt, steht in `docs/edge-verteilung.md`.
+
 ## Betriebsperspektive
 
 Für die Produktivversion erhält der Service einen eigenen Docker-Stack
