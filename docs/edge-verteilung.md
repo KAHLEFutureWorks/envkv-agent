@@ -23,6 +23,13 @@ Hybrid Join). Wird künftig auf reines Entra-Join umgestellt, funktioniert
 dieser Weg nicht mehr und die Erweiterung muss unsichtbar über den
 Edge-Add-ons-Store veröffentlicht werden.
 
+## Kennung der Erweiterung
+
+    moankhcgjjnfocehoilhlehgkiicebpp
+
+Sie ist nicht geheim, aber sie ist fest: Jede Richtlinie und jede
+Aktualisierung bezieht sich auf genau diese Zeichenfolge.
+
 ## Der Signaturschlüssel
 
 Beim ersten Packen entsteht eine Datei `kahle-envkv-agent.pem`. Aus ihrem
@@ -80,7 +87,7 @@ settings** (`ExtensionSettings`). Wert:
 
 ```json
 {
-  "KENNUNG_DER_ERWEITERUNG": {
+  "moankhcgjjnfocehoilhlehgkiicebpp": {
     "installation_mode": "force_installed",
     "update_url": "https://envkv.kahle.de/ext/updates.xml",
     "override_update_url": true,

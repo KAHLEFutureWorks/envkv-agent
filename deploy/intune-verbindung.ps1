@@ -17,7 +17,7 @@
     vertretbar, ersetzt aber keine Benutzeranmeldung.
 #>
 
-$ExtensionId = "HIER_DIE_KENNUNG_EINTRAGEN"
+$ExtensionId = "moankhcgjjnfocehoilhlehgkiicebpp"
 $ApiUrl      = "https://envkv.kahle.de"
 $ApiKey      = "HIER_DEN_SCHLUESSEL_EINTRAGEN"
 

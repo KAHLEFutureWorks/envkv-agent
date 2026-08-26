@@ -2,15 +2,28 @@
   "manifest_version": 3,
   "name": "KAHLE EnVKV Agent",
   "version": "0.1.0",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0R6M9w0CRLoF5LfDc74VZnYAMDz5Vuy90H25LPXAaFsF+exRPQ0N9SXtGlPcGGPY8G6gZSTJJZn/PJELZepFkd+tXmfE6EyErcSbV4KGRn2alCS6rW46GzEBIXtbKQdu/o27D7sbu+QnJqSR+6RDjix4OWSirYGiyMI6vmyHb89ATeCEnTGZLmjta+ZKlcElKlm2s1FFxY4hy9sFqnegdiyo60Jhp5Asw3A5V4H4GDIKWf8WLuJ+u8WTj3qtPdcgG4v9IadIJFfqjkMjz+PmiMZL9/1W5c6dY3jHSRuvjBuR63/x9iuP8Cfpotr9knmm4x6cGza6MLiJHPr3YTL1LwIDAQAB",
   "description": "Erzeugt nachvollziehbare EnVKV-Texte aus Volkswagen-Herstellerdaten.",
-  "permissions": ["sidePanel", "storage", "clipboardWrite"],
-  "storage": { "managed_schema": "managed-storage-schema.json" },
+  "permissions": [
+    "sidePanel",
+    "storage",
+    "clipboardWrite"
+  ],
+  "storage": {
+    "managed_schema": "managed-storage-schema.json"
+  },
   "host_permissions": [
     "https://envkv.kahle.de/*",
     "http://127.0.0.1:8088/*"
   ],
-  "background": { "service_worker": "service-worker.js" },
-  "side_panel": { "default_path": "sidepanel.html" },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
   "options_page": "options.html",
-  "action": { "default_title": "KAHLE EnVKV Agent öffnen" }
+  "action": {
+    "default_title": "KAHLE EnVKV Agent öffnen"
+  }
 }
