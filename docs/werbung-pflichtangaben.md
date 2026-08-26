@@ -96,10 +96,27 @@ Als Beispiel für einen ausschließenden Hinweis nennt der Katalog:
 > „Dieses Angebot ist vom Fernabsatzhandel ausgeschlossen. Für einen
 > Vertragsabschluss bedarf es einer persönlichen Vertragsunterzeichnung vor Ort."
 
-Praktisch heißt das: Solange auf unseren Seiten kein Vertrag rein digital
-zustande kommt, sind es Werbeseiten, und die drei Pflichtangaben genügen. Sobald
-ein durchgehender Online-Abschluss möglich ist, brauchen dieselben Seiten den
-vollständigen Anlage-1-Hinweis.
+### Für KAHLE geklärt: kein Fernabsatz
+
+Bei uns muss ein Kunde für den Kauf eines Fahrzeugs in die Geschäftsräume
+kommen; der Kaufvertrag wird dort persönlich mit einer Verkäuferin oder einem
+Verkäufer ausgefüllt und unterschrieben. Ein Vertragsschluss ausschließlich über
+Fernkommunikationsmittel findet nicht statt.
+
+Damit sind unsere Fahrzeugseiten **Onlinewerbung**. Es gelten § 5 sowie Anlage 4
+Teil I und II ohne Ziffer 3. Für die Website und für Social Media genügen die
+drei Pflichtangaben; der vollständige Anlage-1-Hinweis ist dort nicht
+vorgeschrieben.
+
+Zwei Dinge folgen daraus:
+
+1. **Am Verkaufsort bleibt das Pkw-Label Pflicht.** § 3 Absatz 1 Pkw-EnVKV
+   verlangt den Hinweis am ausgestellten Fahrzeug. Diese Pflicht besteht
+   unabhängig von der Website. Der EnVKV-Agent erzeugt genau dieses Blatt über
+   die Druckansicht.
+2. **Die Einordnung sollte erkennbar sein.** Da es auf die tatsächliche
+   Handhabung ankommt, ist ein ausdrücklicher Hinweis auf den Angebotsseiten der
+   sicherste Weg, etwa mit dem oben zitierten Beispielsatz.
 
 ## Wenn wir mehr angeben als nötig
 
@@ -157,8 +174,13 @@ davon, ob das Fahrzeug Benzin, Diesel, Strom oder Wasserstoff verbraucht.
 
 | Verwendung | Was ausgegeben wird |
 |---|---|
-| Fahrzeugwerbung, Social Media, allgemeine Onlinewerbung | Energieverbrauch kombiniert, CO₂-Emissionen kombiniert, CO₂-Klasse. Bei Plug-in-Hybriden zusätzlich Kraftstoffverbrauch bei entladener Batterie und zweite CO₂-Klasse. |
-| Konkretes Online- oder Leasingangebot | Zusätzlich der vollständige Hinweis nach Anlage 1 mit allen vier Fahrphasen, Energiekosten, CO₂-Kosten und Kraftfahrzeugsteuer |
+| Website, Social Media, Printwerbung | Energieverbrauch kombiniert, CO₂-Emissionen kombiniert, CO₂-Klasse. Bei Plug-in-Hybriden zusätzlich Kraftstoffverbrauch bei entladener Batterie und zweite CO₂-Klasse. |
+| Ausgestelltes Fahrzeug im Autohaus | Der vollständige Hinweis nach Anlage 1 mit allen vier Fahrphasen, Energiekosten, CO₂-Kosten und Kraftfahrzeugsteuer — über die Druckansicht des Agenten |
+
+Solange wir keinen Fernabsatz anbieten, brauchen unsere Fahrzeugseiten den
+vollständigen Hinweis **nicht**. Sollte sich das ändern, etwa durch einen
+Onlineshop mit durchgehendem Vertragsschluss, ändert sich der Pflichtumfang für
+dieselben Seiten sofort.
 
 Beispiel für einen Benziner:
 
