@@ -1,4 +1,10 @@
-export type Settings = { apiUrl: string; apiKey: string };
+export type Settings = {
+  apiUrl: string;
+  apiKey: string;
+  /** true, wenn der Wert aus der Unternehmensrichtlinie stammt und nicht änderbar ist. */
+  managedUrl?: boolean;
+  managedKey?: boolean;
+};
 export type UsageContext = "advertising" | "social_media" | "online_offer" | "leasing_offer";
 
 export type ModelRangeGroup = {

@@ -5,9 +5,30 @@ const urlInput = document.querySelector<HTMLInputElement>("#api-url")!;
 const keyInput = document.querySelector<HTMLInputElement>("#api-key")!;
 const feedback = document.querySelector<HTMLElement>("#settings-feedback")!;
 
+const note = document.querySelector<HTMLElement>("#managed-note")!;
+const saveButton = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+
 void loadSettings().then((settings) => {
   urlInput.value = settings.apiUrl;
   keyInput.value = settings.apiKey;
+
+  // Werte aus der Unternehmensrichtlinie gewinnen beim Lesen immer. Sie hier
+  // bearbeitbar zu lassen, würde ein Speichern vortäuschen, das folgenlos bleibt.
+  if (settings.managedUrl) {
+    urlInput.readOnly = true;
+  }
+  if (settings.managedKey) {
+    keyInput.readOnly = true;
+  }
+  if (settings.managedUrl || settings.managedKey) {
+    note.textContent = "Die Verbindung wird von der IT über eine Unternehmensrichtlinie vorgegeben "
+      + "und muss hier nicht eingetragen werden. Vorgegebene Felder lassen sich nicht ändern.";
+    note.classList.remove("hidden");
+  }
+  if (settings.managedUrl && settings.managedKey) {
+    saveButton.disabled = true;
+    saveButton.textContent = "Durch Unternehmensrichtlinie vorgegeben";
+  }
 });
 
 form.addEventListener("submit", async (event) => {

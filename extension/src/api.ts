@@ -14,11 +14,15 @@ export async function loadSettings(): Promise<Settings> {
   } catch {
     // Lokal geladene Erweiterungen besitzen üblicherweise noch keine Unternehmensrichtlinie.
   }
+  const managedUrl = typeof managed.apiUrl === "string" && managed.apiUrl ? managed.apiUrl : null;
+  const managedKey = typeof managed.apiKey === "string" && managed.apiKey ? managed.apiKey : null;
   return {
-    apiUrl: typeof managed.apiUrl === "string" ? managed.apiUrl :
-      typeof stored.apiUrl === "string" ? stored.apiUrl : "http://127.0.0.1:8088",
-    apiKey: typeof managed.apiKey === "string" ? managed.apiKey :
-      typeof stored.apiKey === "string" ? stored.apiKey : "",
+    apiUrl: managedUrl ?? (typeof stored.apiUrl === "string" ? stored.apiUrl : "http://127.0.0.1:8088"),
+    apiKey: managedKey ?? (typeof stored.apiKey === "string" ? stored.apiKey : ""),
+    // Vorgegebene Werte lassen sich nicht überschreiben. Die Einstellungsseite
+    // muss das zeigen, sonst wirkt ein Speichern folgenlos.
+    managedUrl: managedUrl !== null,
+    managedKey: managedKey !== null,
   };
 }
 
