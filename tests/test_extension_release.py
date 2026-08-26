@@ -14,6 +14,9 @@ from backend.app.services.extension_release import (
 
 KENNUNG = "abcdefghijklmnopabcdefghijklmnop"
 
+# Ein Paket beginnt mit dieser Kennzeichnung; der Rest ist hier ohne Belang.
+PAKETINHALT = b"Cr24" + bytes([3, 0, 0, 0])
+
 
 def paket(verzeichnis: Path, version: str, inhalt: bytes = b"Cr24") -> Path:
     datei = verzeichnis / f"kahle-envkv-agent-{version}.crx"
@@ -98,6 +101,22 @@ def test_auslieferung_ohne_zugriffsschluessel_erreichbar(tmp_path: Path) -> None
     # Ohne genau diesen Inhaltstyp verweigert Edge die Installation.
     assert paket_antwort.headers["content-type"] == "application/x-chrome-extension"
     assert paket_antwort.content == b"Cr24\x00\x00\x00"
+
+
+def test_head_wird_mitbedient(tmp_path: Path) -> None:
+    # Eine Pruefung der Auslieferung soll das Paket nicht herunterladen muessen.
+    verzeichnis = tmp_path / "releases"
+    verzeichnis.mkdir()
+    paket(verzeichnis, "0.1.0", PAKETINHALT)
+    client = TestClient(create_app(einstellungen(tmp_path, verzeichnis=verzeichnis)))
+
+    for adresse, typ in [
+        ("/ext/updates.xml", "application/xml"),
+        ("/ext/kahle-envkv-agent-0.1.0.crx", "application/x-chrome-extension"),
+    ]:
+        antwort = client.head(adresse)
+        assert antwort.status_code == 200, adresse
+        assert antwort.headers["content-type"].startswith(typ), adresse
 
 
 def test_ohne_kennung_bleibt_die_auslieferung_abgeschaltet(tmp_path: Path) -> None:

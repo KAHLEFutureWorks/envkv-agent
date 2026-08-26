@@ -235,7 +235,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     # erreichbar: Edge kennt beim Abholen der Erweiterung keinen Schluessel.
     # Ausgeliefert wird ausschliesslich das signierte Paket, das selbst keine
     # Zugangsdaten enthaelt.
-    @app.get("/ext/updates.xml", response_class=Response)
+    # HEAD wird mitbedient, damit sich die Auslieferung ohne Download pruefen
+    # laesst. FastAPI ergaenzt HEAD im Gegensatz zu Starlette nicht von selbst.
+    @app.api_route("/ext/updates.xml", methods=["GET", "HEAD"], response_class=Response)
     def extension_updates(request: Request) -> Response:
         config = release_directory(request)
         release = latest_release(config.extension_release_dir)
@@ -247,7 +249,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             headers={"Cache-Control": "no-cache"},
         )
 
-    @app.get("/ext/{filename}", response_class=FileResponse)
+    @app.api_route("/ext/{filename}", methods=["GET", "HEAD"], response_class=FileResponse)
     def extension_package(filename: str, request: Request) -> FileResponse:
         config = release_directory(request)
         release = resolve_package(config.extension_release_dir, filename)
