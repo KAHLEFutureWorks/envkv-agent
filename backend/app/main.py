@@ -15,7 +15,7 @@ from backend.app.domain.envkv import ComplianceProfileIncomplete, UsageContext
 from backend.app.services.compliance import (
     ComplianceService, cost_config_from_settings, non_offer_cost_config_from_settings,
 )
-from backend.app.services.volkswagen.client import OkapiClient, OkapiError
+from backend.app.services.volkswagen.client import MissingWltpData, OkapiClient, OkapiError
 from backend.app.services.volkswagen.provider import (
     ManualReviewRequired,
     VehicleNotEligible,
@@ -87,6 +87,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 with contextlib.suppress(asyncio.CancelledError):
                     await task
 
+    if not LOGGER.handlers:
+        # Uvicorn richtet nur seine eigenen Logger ein. Ohne diesen Handler
+        # bliebe jede Meldung dieses Dienstes unterhalb WARNING unsichtbar.
+        handler = logging.StreamHandler()
+        handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
+        LOGGER.addHandler(handler)
+        LOGGER.setLevel(logging.INFO)
+
     app = FastAPI(title="KAHLE EnVKV API", version="0.1.0", lifespan=lifespan)
     app.state.settings = app_settings
     app.state.compliance_service = None
@@ -130,6 +138,19 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                 detail="Der Zugriff auf den EnVKV-Dienst wurde nicht bestätigt.",
             )
 
+    def okapi_failure(error: OkapiError, vehicle_name: str) -> HTTPException:
+        """Nach aussen eine Sammelmeldung, im Protokoll der tatsaechliche Grund.
+
+        Hinter OkapiError stehen sehr verschiedene Faelle: eine abgewiesene
+        Anfrage, eine unlesbare Antwort, ein unerwartetes Datenformat. Ohne
+        diesen Eintrag laesst sich hinterher keiner davon unterscheiden.
+        """
+        LOGGER.warning("OKAPI-Abruf fehlgeschlagen für %r: %s", vehicle_name, error)
+        return HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Die Volkswagen-Produktdaten sind aktuell nicht erreichbar.",
+        )
+
     @app.get("/api/v1/health")
     def health() -> dict[str, str]:
         return {"status": "ok"}
@@ -158,8 +179,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             ) from error
         except ComplianceProfileIncomplete as error:
             raise HTTPException(status_code=409, detail=str(error)) from error
+        except MissingWltpData as error:
+            # Kein Stoerungsfall: Ein spaeterer Versuch aendert daran nichts.
+            LOGGER.info("Keine WLTP-Werte für %r: %s", payload.vehicle_name, error)
+            raise HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+                detail=(
+                    "Volkswagen führt für dieses Fahrzeug keine WLTP-Verbrauchswerte. Ein Verbrauchstext lässt sich daraus nicht erzeugen."
+                ),
+            ) from error
         except OkapiError as error:
-            raise HTTPException(status_code=503, detail="Die Volkswagen-Produktdaten sind aktuell nicht erreichbar.") from error
+            raise okapi_failure(error, payload.vehicle_name) from error
 
     @app.post("/api/v1/vehicle/model-range", dependencies=[Depends(require_api_key)])
     def model_range(payload: ModelRangeRequest, request: Request) -> dict[str, object]:
@@ -184,10 +214,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             ) from error
         except ComplianceProfileIncomplete as error:
             raise HTTPException(status_code=409, detail=str(error)) from error
-        except OkapiError as error:
+        except MissingWltpData as error:
+            # Kein Stoerungsfall: Ein spaeterer Versuch aendert daran nichts.
+            LOGGER.info("Keine WLTP-Werte für %r: %s", payload.vehicle_name, error)
             raise HTTPException(
-                status_code=503, detail="Die Volkswagen-Produktdaten sind aktuell nicht erreichbar."
+                status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+                detail=(
+                    "Volkswagen führt für dieses Fahrzeug keine WLTP-Verbrauchswerte. Ein Verbrauchstext lässt sich daraus nicht erzeugen."
+                ),
             ) from error
+        except OkapiError as error:
+            raise okapi_failure(error, payload.vehicle_name) from error
 
     def data_sheet_for(payload: ComplianceRequest, request: Request) -> dict[str, object]:
         service = request.app.state.compliance_service
@@ -201,8 +238,17 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             return result["data_sheet"]  # type: ignore[return-value]
         except (VehicleNotFound, VehicleNotEligible, ManualReviewRequired, ComplianceProfileIncomplete) as error:
             raise HTTPException(status_code=409, detail=str(error)) from error
+        except MissingWltpData as error:
+            # Kein Stoerungsfall: Ein spaeterer Versuch aendert daran nichts.
+            LOGGER.info("Keine WLTP-Werte für %r: %s", payload.vehicle_name, error)
+            raise HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
+                detail=(
+                    "Volkswagen führt für dieses Fahrzeug keine WLTP-Verbrauchswerte. Ein Verbrauchstext lässt sich daraus nicht erzeugen."
+                ),
+            ) from error
         except OkapiError as error:
-            raise HTTPException(status_code=503, detail="Die Volkswagen-Produktdaten sind aktuell nicht erreichbar.") from error
+            raise okapi_failure(error, payload.vehicle_name) from error
 
     @app.post("/api/v1/vehicle/data-sheet.html", dependencies=[Depends(require_api_key)], response_class=HTMLResponse)
     def data_sheet_html(payload: ComplianceRequest, request: Request) -> HTMLResponse:

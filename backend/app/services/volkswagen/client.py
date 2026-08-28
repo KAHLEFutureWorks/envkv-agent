@@ -7,5 +7,6 @@ Backend-Paket verschoben werden kann.
 """
 
 from spike.okapi import OkapiClient, OkapiError
+from spike.okapi_probe import MissingWltpData
 
-__all__ = ["OkapiClient", "OkapiError"]
+__all__ = ["OkapiClient", "OkapiError", "MissingWltpData"]

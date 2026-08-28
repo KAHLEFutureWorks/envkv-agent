@@ -18,6 +18,7 @@ from backend.app.domain.envkv import (
 )
 from backend.app.storage import SQLiteStore, technical_cache_key
 from spike.okapi import OkapiError
+from spike.okapi_probe import MissingWltpData
 from spike.okapi_probe import extract_verified_wltp
 
 
@@ -494,12 +495,14 @@ class VolkswagenProvider:
                 )
                 powertrain = _powertrain_for(values)
                 consumption = _consumption_for(values)
-            except ManualReviewRequired as error:
+            except (ManualReviewRequired, MissingWltpData) as error:
                 # Fachliche Gründe machen die Spanne dauerhaft unvollständig und
-                # gehören in die Prüfliste. Ein vorübergehender Transportfehler
-                # darf dagegen nicht als "nicht bestätigbar" erscheinen, sondern
-                # muss als solcher gemeldet werden, damit der Abruf wiederholbar
-                # bleibt.
+                # gehören in die Prüfliste. Fehlende WLTP-Werte einer einzelnen
+                # Variante zählen dazu: Sie sind eine Eigenschaft des Fahrzeugs
+                # und dürfen nicht den Abruf der ganzen Familie abbrechen. Ein
+                # vorübergehender Transportfehler darf dagegen nicht als "nicht
+                # bestätigbar" erscheinen, sondern muss als solcher gemeldet
+                # werden, damit der Abruf wiederholbar bleibt.
                 unresolved.append({"type_id": type_id, "name": description, "reason": str(error)})
                 continue
             by_powertrain.setdefault(powertrain, []).append((type_code, consumption))

@@ -164,6 +164,17 @@ def _wltp_value(
     return matches[0]
 
 
+class MissingWltpData(OkapiError):
+    """Volkswagen hat geantwortet, fuehrt fuer dieses Fahrzeug aber keine Werte.
+
+    Das ist kein Stoerungsfall, sondern eine Eigenschaft des Fahrzeugs: Ohne
+    WLTP-Werte laesst sich kein Verbrauchstext erzeugen, und ein spaeterer
+    Versuch aendert daran nichts. Als Unterklasse von OkapiError bleibt jede
+    bestehende Behandlung gueltig; wer genauer unterscheiden will, faengt diese
+    Klasse zuerst.
+    """
+
+
 def extract_verified_wltp(payload: dict[str, Any] | list[Any]) -> dict[str, Any]:
     if not isinstance(payload, dict):
         raise OkapiError("Die WLTP-Antwort hat nicht das erwartete Objektformat.")
@@ -179,19 +190,19 @@ def extract_verified_wltp(payload: dict[str, Any] | list[Any]) -> dict[str, Any]
         or len(values) != 1
         or not isinstance(values[0], dict)
     ):
-        raise OkapiError("Der WLTP-Datensatz ist nicht erfolgreich oder nicht eindeutig.")
+        raise MissingWltpData("Für dieses Fahrzeug liegt bei Volkswagen kein gültiger WLTP-Datensatz vor.")
 
     vehicle = values[0]
     interpolations = vehicle.get("interpolations")
     energy_efficiency = vehicle.get("energy_efficiency")
     if not isinstance(interpolations, list) or not isinstance(energy_efficiency, dict):
-        raise OkapiError("Im WLTP-Datensatz fehlen Verbrauchs- oder Effizienzwerte.")
+        raise MissingWltpData("Im WLTP-Datensatz von Volkswagen fehlen die Verbrauchs- oder Effizienzwerte.")
 
     engine_type = vehicle.get("engine_type")
     fuel_types = vehicle.get("fuel_types")
     co2_class = energy_efficiency.get("class_wltp")
     if not isinstance(co2_class, str) or not co2_class:
-        raise OkapiError("Im WLTP-Datensatz fehlt die CO₂-Klasse.")
+        raise MissingWltpData("Im WLTP-Datensatz von Volkswagen fehlt die CO₂-Klasse.")
 
     result: dict[str, Any] = {
         "engine_type": engine_type,
