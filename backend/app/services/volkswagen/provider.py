@@ -78,13 +78,20 @@ def _normalise(value: str) -> str:
     return " ".join(without_marks.split())
 
 
+# Volkswagen fuehrt seine Modelle im Katalog mit Artikel: "Der Grand California".
+_ARTICLE = re.compile(r"^(?:der|die|das)\s+(?:neue[rs]?\s+)?", re.IGNORECASE)
+
+
+def _without_article(value: str) -> str:
+    return _ARTICLE.sub("", value)
+
+
 def _catalog_model_name(value: str) -> str:
-    normalised = _normalise(value)
-    return re.sub(r"^(?:der|die|das)\s+(?:neue[rs]?\s+)?", "", normalised)
+    return _without_article(_normalise(value))
 
 
 def _catalog_model_display(value: str) -> str:
-    return re.sub(r"^(?:der|die|das)\s+(?:neue[rs]?\s+)?", "", value.strip(), flags=re.IGNORECASE)
+    return _without_article(value.strip())
 
 
 # Mehrere Konzernmarken teilen sich einen OKAPI-Katalog. SEAT und CUPRA liegen
@@ -123,6 +130,26 @@ def _subbrand_matches(brand_definition: dict[str, Any], subbrand: str | None) ->
     return subbrand == own or (own == "volkswagen" and subbrand == "vw")
 
 
+# Modellfamilien, die ihre Marke selbst tragen. "Grand California" muss vor
+# "California" stehen, sonst greift der laengere Name nie.
+_IMPLICIT_MODELS = (
+    ("Volkswagen Nutzfahrzeuge", ("id. buzz", "e-transporter", "transporter", "multivan", "caddy", "grand california", "california", "caravelle", "crafter")),
+    ("Volkswagen", ("t-cross", "t-roc", "golf", "tiguan", "passat", "tayron", "touareg", "polo", "id. cross", "id. polo")),
+    ("Audi", ("a1", "a3", "a4", "a5", "a6", "a7", "a8", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "e-tron", "e-tron gt")),
+    ("SEAT", ("arona", "ateca", "ibiza", "leon", "tarraco")),
+    ("Škoda", ("elroq", "enyaq", "epiq", "fabia", "kamiq", "karoq", "kodiaq", "octavia", "peaq", "scala", "superb")),
+    ("CUPRA", ("born", "formentor", "raval", "tavascan", "terramar")),
+)
+
+
+def _implicit_brand(query: str) -> str | None:
+    """Die Marke, die sich allein aus dem Modellnamen ergibt."""
+    for display, model_names in _IMPLICIT_MODELS:
+        if any(query == name or query.startswith(f"{name} ") for name in model_names):
+            return display
+    return None
+
+
 def _brand_for_input(vehicle_name: str) -> tuple[dict[str, Any], str]:
     normalised = _normalise(vehicle_name)
     for definition in _SUPPORTED_BRANDS:
@@ -132,19 +159,23 @@ def _brand_for_input(vehicle_name: str) -> tuple[dict[str, Any], str]:
                 remaining = normalised[len(alias_normalised):].strip()
                 if definition["display"] == "CUPRA":
                     remaining = f"cupra {remaining}"
+                # "VW" ist im Alltag der Name fuer beide Kataloge. Ein Multivan
+                # oder Grand California liegt aber ausschliesslich bei
+                # Volkswagen Nutzfahrzeuge und waere im Pkw-Katalog nie zu
+                # finden. Der Modellname entscheidet deshalb ueber den Katalog.
+                if (
+                    definition["display"] == "Volkswagen"
+                    and _implicit_brand(_without_article(remaining)) == "Volkswagen Nutzfahrzeuge"
+                ):
+                    definition = next(
+                        item for item in _SUPPORTED_BRANDS
+                        if item["display"] == "Volkswagen Nutzfahrzeuge"
+                    )
                 return definition, remaining
     if re.search(r"\bid\.\d+\b", normalised):
         volkswagen = next(item for item in _SUPPORTED_BRANDS if item["code"] == "VW")
         return volkswagen, normalised
-    implicit_models = (
-        ("Volkswagen Nutzfahrzeuge", ("id. buzz", "e-transporter", "transporter", "multivan", "caddy", "california", "crafter")),
-        ("Volkswagen", ("t-cross", "t-roc", "golf", "tiguan", "passat", "tayron", "touareg", "polo", "id. cross", "id. polo")),
-        ("Audi", ("a1", "a3", "a4", "a5", "a6", "a7", "a8", "q2", "q3", "q4", "q5", "q6", "q7", "q8", "e-tron", "e-tron gt")),
-        ("SEAT", ("arona", "ateca", "ibiza", "leon", "tarraco")),
-        ("Škoda", ("elroq", "enyaq", "epiq", "fabia", "kamiq", "karoq", "kodiaq", "octavia", "peaq", "scala", "superb")),
-        ("CUPRA", ("born", "formentor", "raval", "tavascan", "terramar")),
-    )
-    query_without_article = re.sub(r"^(?:der|die|das)\s+(?:neue[rs]?\s+)?", "", normalised)
+    query_without_article = _without_article(normalised)
     overlapping_models = ("ateca", "leon")
     if any(
         query_without_article == model
@@ -154,11 +185,11 @@ def _brand_for_input(vehicle_name: str) -> tuple[dict[str, Any], str]:
         raise VehicleNotFound(
             "Dieses Modell gibt es bei SEAT oder CUPRA. Bitte die gewünschte Marke mit angeben."
         )
-    for display, model_names in implicit_models:
-        if any(query_without_article == name or query_without_article.startswith(f"{name} ") for name in model_names):
-            definition = next(item for item in _SUPPORTED_BRANDS if item["display"] == display)
-            query = f"cupra {query_without_article}" if display == "CUPRA" else query_without_article
-            return definition, query
+    display = _implicit_brand(query_without_article)
+    if display is not None:
+        definition = next(item for item in _SUPPORTED_BRANDS if item["display"] == display)
+        query = f"cupra {query_without_article}" if display == "CUPRA" else query_without_article
+        return definition, query
     raise VehicleNotFound("Die Fahrzeugmarke fehlt oder wird noch nicht unterstützt.")
 
 
